@@ -1,0 +1,45 @@
+version: 2
+
+sources:
+  - name: github_archive
+    description: |
+      GitHub event archive, hosted as a public BigQuery dataset by Google.
+      Each `day.YYYYMMDD` table contains ~3.5M-5M events for that UTC day.
+      
+      **Known data caveats** (discovered during exploration):
+      - PR event payloads are simplified — `pull_request.additions`,
+        `pull_request.deletions`, `pull_request.merged` (nested), title,
+        author, etc. are NULL. Use top-level `action` field to detect merges.
+      - PushEvent payloads omit `size`, `distinct_size`, and the `commits[]`
+        array. Push-level activity countable, commit-level analysis impossible.
+      - WatchEvent payloads are complete (engagement analysis fully supported).
+      
+    database: githubarchive
+    schema: day
+    tables:
+      - name: "20260428"
+        description: "GitHub events for 2026-04-28 UTC. ~3.65M rows."
+        columns:
+          - name: id
+            description: "Unique event ID, suitable as primary key."
+            data_tests:
+              - unique
+              - not_null
+          - name: type
+            description: "Event type. Top 9 cover ~99.5% of volume."
+            data_tests:
+              - not_null
+          - name: created_at
+            description: "Event timestamp in UTC."
+            data_tests:
+              - not_null
+          - name: actor
+            description: "Nested RECORD with actor.id, actor.login, actor.avatar_url."
+          - name: repo
+            description: "Nested RECORD with repo.id, repo.name, repo.url."
+          - name: payload
+            description: "Event-type-specific data as JSON STRING. Schema varies per event type."
+          - name: org
+            description: "Nullable. Organization that owns the repo, when applicable."
+          - name: public
+            description: "Always true for events in this archive."

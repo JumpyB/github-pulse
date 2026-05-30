@@ -1,0 +1,104 @@
+version: 2
+
+models:
+  - name: stg_github__pull_request_events
+    description: |
+      One row per PullRequestEvent. Surfaces the top-level `action`
+      (opened/closed/merged/labeled/...) and identifiers.
+      
+      Detail fields (additions, deletions, title, author) are NULL in
+      the source — GitHub Archive simplified its PR payload.
+    columns:
+      - name: event_id
+        description: "Globally unique GitHub event ID."
+        data_tests:
+          - unique
+          - not_null
+      - name: pr_id
+        description: "GitHub-internal PR ID. Stable across renames."
+        data_tests:
+          - not_null
+      - name: pr_action
+        description: "What happened to the PR in this event."
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values:
+                  - opened
+                  - closed
+                  - merged
+                  - reopened
+                  - labeled
+                  - unlabeled
+                  - assigned
+                  - unassigned
+                  - review_requested
+                  - review_request_removed
+                  - synchronize
+                  - edited
+                  - ready_for_review
+                  - converted_to_draft
+                  - auto_merge_enabled
+                  - auto_merge_disabled
+              config:
+                severity: warn
+      - name: repo_id
+        description: "Repository ID."
+        data_tests:
+          - not_null
+      - name: actor_id
+        description: "User ID of who triggered the event."
+        data_tests:
+          - not_null
+      - name: event_at
+        description: "Event timestamp (UTC)."
+        data_tests:
+          - not_null
+
+  - name: stg_github__watch_events
+    description: |
+      One row per WatchEvent. In GitHub's API, WatchEvent = a user starring
+      a repository (legacy naming — actual "watch" feature is called subscribe).
+    columns:
+      - name: event_id
+        data_tests: [unique, not_null]
+      - name: actor_id
+        data_tests: [not_null]
+      - name: repo_id
+        data_tests: [not_null]
+      - name: event_at
+        data_tests: [not_null]
+
+  - name: stg_github__create_events
+    description: |
+      One row per CreateEvent. `ref_type` indicates whether a branch,
+      tag, or repository was created.
+    columns:
+      - name: event_id
+        data_tests: [unique, not_null]
+      - name: ref_type
+        description: "Object created: branch, tag, or repository."
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: [branch, tag, repository]
+              config:
+                severity: warn
+
+  - name: stg_github__delete_events
+    description: |
+      One row per DeleteEvent. Repository deletion does not generate
+      this event — only branches and tags do.
+    columns:
+      - name: event_id
+        data_tests: [unique, not_null]
+      - name: ref_type
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: [branch, tag]
+              config:
+                severity: warn
