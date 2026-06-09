@@ -1,0 +1,46 @@
+version: 2
+
+models:
+  - name: dim_date
+    description: "Date dimension spanning 2024-01-01 to 2027-12-31. Generated in SQL."
+    columns:
+      - name: date_id
+        description: "Integer surrogate key in YYYYMMDD format."
+        data_tests:
+          - unique
+          - not_null
+      - name: calendar_date
+        data_tests:
+          - unique
+          - not_null
+
+  - name: dim_actor
+    description: |
+      One row per unique GitHub actor observed across all event types.
+      SCD Type 1 — login reflects the most recently observed value.
+    columns:
+      - name: actor_id
+        description: "GitHub internal user ID. Stable across username renames."
+        data_tests:
+          - unique
+          - not_null
+      - name: actor_login
+        data_tests:
+          - not_null
+
+  - name: dim_repo
+    description: |
+      Current state of all repositories observed in the event stream.
+      Backed by snap_repos (SCD Type 2). Query snap_repos directly for history.
+    columns:
+      - name: repo_sk
+        description: "Snapshot surrogate key (dbt_scd_id from snap_repos)."
+        data_tests:
+          - unique
+          - not_null
+      - name: repo_id
+        data_tests:
+          - not_null
+      - name: is_current
+        data_tests:
+          - not_null

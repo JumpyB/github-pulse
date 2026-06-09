@@ -1,8 +1,16 @@
-{{
-  config(
-    materialized='table'
-  )
-}}
+
+  
+    
+
+    create or replace table `github-pulse-jumpy`.`github_pulse_analytics_dev_core`.`dim_date`
+      
+    
+    
+
+    
+    OPTIONS()
+    as (
+      
 
 with date_spine as (
 
@@ -37,3 +45,5 @@ final as (
 )
 
 select * from final
+    );
+  

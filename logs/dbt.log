@@ -3568,3 +3568,1094 @@ having count(*) > 1
 [0m17:42:49.552578 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10785a750>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1041273d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1075fbe10>]}
 [0m17:42:49.552714 [debug] [MainThread]: Flushing usage events
 [0m17:42:49.918410 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m12:52:16.605044 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x104b85650>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x104d27850>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x104d27f50>]}
+
+
+============================== 12:52:16.607759 | 0d287c43-18b3-4c15-be80-757a7676dfe7 ==============================
+[0m12:52:16.607759 [info ] [MainThread]: Running with dbt=1.11.11
+[0m12:52:16.608020 [debug] [MainThread]: running dbt with arguments {'fail_fast': 'False', 'partial_parse': 'True', 'debug': 'False', 'version_check': 'True', 'send_anonymous_usage_stats': 'True', 'warn_error': 'None', 'quiet': 'False', 'profiles_dir': '/Users/perrikwong/.dbt', 'log_format': 'default', 'use_colors': 'True', 'invocation_command': 'dbt snapshot', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'use_experimental_parser': 'False', 'cache_selected_only': 'False', 'log_path': '/Users/perrikwong/Desktop/github_pulse/logs', 'log_cache_events': 'False', 'introspect': 'True', 'static_parser': 'True', 'write_json': 'True', 'target_path': 'None', 'indirect_selection': 'eager', 'printer_width': '80', 'empty': 'False', 'no_print': 'None'}
+[0m12:52:19.110715 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '0d287c43-18b3-4c15-be80-757a7676dfe7', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x104d15210>]}
+[0m12:52:19.131419 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '0d287c43-18b3-4c15-be80-757a7676dfe7', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x102315f10>]}
+[0m12:52:19.131657 [info ] [MainThread]: Registered adapter: bigquery=1.11.1
+[0m12:52:19.200909 [debug] [MainThread]: checksum: 30a8cc8fdcbf66701b0944d4ccce3fa46dd04b61e5df68b9f16d57b2e0e3f0be, vars: {}, profile: , target: , version: 1.11.11
+[0m12:52:19.275913 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 5 files added, 1 files changed.
+[0m12:52:19.276147 [debug] [MainThread]: Partial parsing: added file: github_pulse://models/marts/core/dim_date.sql
+[0m12:52:19.276259 [debug] [MainThread]: Partial parsing: added file: github_pulse://snapshots/snap_repos.sql
+[0m12:52:19.276384 [debug] [MainThread]: Partial parsing: added file: github_pulse://models/marts/core/_models.yml
+[0m12:52:19.276478 [debug] [MainThread]: Partial parsing: added file: github_pulse://models/marts/core/dim_actor.sql
+[0m12:52:19.276571 [debug] [MainThread]: Partial parsing: added file: github_pulse://models/marts/core/dim_repo.sql
+[0m12:52:19.276703 [debug] [MainThread]: Partial parsing: updated file: github_pulse://models/staging/stg_github__watch_events.sql
+[0m12:52:19.535873 [warn ] [MainThread]: [[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+There are 4 unused configuration paths:
+- models.github_pulse.marts.engagement
+- models.github_pulse.marts.lifecycle
+- models.github_pulse.intermediate
+- models.github_pulse.marts.pull_requests
+[0m12:52:19.541070 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '0d287c43-18b3-4c15-be80-757a7676dfe7', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x110c24c90>]}
+[0m12:52:19.584222 [debug] [MainThread]: Wrote artifact WritableManifest to /Users/perrikwong/Desktop/github_pulse/target/manifest.json
+[0m12:52:19.585391 [debug] [MainThread]: Wrote artifact SemanticManifest to /Users/perrikwong/Desktop/github_pulse/target/semantic_manifest.json
+[0m12:52:19.592512 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '0d287c43-18b3-4c15-be80-757a7676dfe7', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x110a6dc10>]}
+[0m12:52:19.592706 [info ] [MainThread]: Found 36 data tests, 7 models, 1 snapshot, 1 source, 549 macros
+[0m12:52:19.592825 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '0d287c43-18b3-4c15-be80-757a7676dfe7', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x110c73ed0>]}
+[0m12:52:19.593686 [info ] [MainThread]: 
+[0m12:52:19.593812 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
+[0m12:52:19.593902 [info ] [MainThread]: 
+[0m12:52:19.594067 [debug] [MainThread]: Acquiring new bigquery connection 'master'
+[0m12:52:19.594371 [debug] [ThreadPool]: Acquiring new bigquery connection 'list_github-pulse-jumpy'
+[0m12:52:19.594513 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m12:52:20.283580 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_github-pulse-jumpy, now create_github-pulse-jumpy_snapshots)
+[0m12:52:20.284680 [debug] [ThreadPool]: Creating schema "database: "github-pulse-jumpy"
+schema: "snapshots"
+"
+[0m12:52:20.296944 [debug] [ThreadPool]: On create_github-pulse-jumpy_snapshots: /* {"app": "dbt", "dbt_version": "1.11.11", "profile_name": "github_pulse", "target_name": "dev", "connection_name": "create_github-pulse-jumpy_snapshots"} */
+create schema if not exists `github-pulse-jumpy`.`snapshots`
+  
+[0m12:52:20.297422 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m12:52:21.078416 [debug] [ThreadPool]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=github-pulse-jumpy&j=bq:US:c7aae23a-a6ea-4638-b9dc-76c7e97f2fa8&page=queryresults
+[0m12:52:22.223880 [debug] [ThreadPool]: SQL status: OK in 1.144 seconds
+[0m12:52:22.294050 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly create_github-pulse-jumpy_snapshots, now list_github-pulse-jumpy_github_pulse_analytics_dev_staging)
+[0m12:52:22.294381 [debug] [ThreadPool]: Acquiring new bigquery connection 'list_github-pulse-jumpy_snapshots'
+[0m12:52:22.294534 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m12:52:22.294742 [debug] [ThreadPool]: Acquiring new bigquery connection 'list_github-pulse-jumpy_github_pulse_analytics_dev_core'
+[0m12:52:22.294924 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m12:52:22.295154 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m12:52:23.031811 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '0d287c43-18b3-4c15-be80-757a7676dfe7', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x110b02850>]}
+[0m12:52:23.032996 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m12:52:23.127171 [debug] [Thread-1 (]: Began running node snapshot.github_pulse.snap_repos
+[0m12:52:23.127453 [info ] [Thread-1 (]: 1 of 1 START snapshot snapshots.snap_repos ..................................... [RUN]
+[0m12:52:23.127640 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list_github-pulse-jumpy_github_pulse_analytics_dev_staging, now snapshot.github_pulse.snap_repos)
+[0m12:52:23.127761 [debug] [Thread-1 (]: Began compiling node snapshot.github_pulse.snap_repos
+[0m12:52:23.131484 [debug] [Thread-1 (]: Began executing node snapshot.github_pulse.snap_repos
+[0m12:52:23.156291 [debug] [Thread-1 (]: On snapshot.github_pulse.snap_repos: /* {"app": "dbt", "dbt_version": "1.11.11", "profile_name": "github_pulse", "target_name": "dev", "node_id": "snapshot.github_pulse.snap_repos"} */
+select * from (
+        
+    
+
+    select *,
+        to_hex(md5(concat(coalesce(cast(repo_id as string), ''), '|',coalesce(cast(dbt_snapshot_at as string), '')))) as dbt_scd_id,
+        dbt_snapshot_at as dbt_updated_at,
+        dbt_snapshot_at as dbt_valid_from,
+        
+  
+  coalesce(nullif(dbt_snapshot_at, dbt_snapshot_at), null)
+  as dbt_valid_to
+from (
+        
+
+
+
+with repos_union as (
+
+    select repo_id, repo_name, org_login, event_at
+    from `github-pulse-jumpy`.`github_pulse_analytics_dev_staging`.`stg_github__pull_request_events`
+    union distinct
+    select repo_id, repo_name, org_login, event_at
+    from `github-pulse-jumpy`.`github_pulse_analytics_dev_staging`.`stg_github__watch_events`
+    union distinct
+    select repo_id, repo_name, org_login, event_at
+    from `github-pulse-jumpy`.`github_pulse_analytics_dev_staging`.`stg_github__create_events`
+    union distinct
+    select repo_id, repo_name, org_login, event_at
+    from `github-pulse-jumpy`.`github_pulse_analytics_dev_staging`.`stg_github__delete_events`
+
+),
+
+latest_per_repo as (
+
+    select
+        repo_id,
+        repo_name,
+        org_login,
+        max(event_at) as dbt_snapshot_at
+
+    from repos_union
+    group by repo_id, repo_name, org_login
+
+)
+
+select * from latest_per_repo
+
+    ) sbq
+
+
+
+    ) as __dbt_sbq
+    where false and current_timestamp() = current_timestamp()
+    limit 0
+
+[0m12:52:23.156483 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m12:52:24.246553 [debug] [Thread-1 (]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=github-pulse-jumpy&j=bq:US:cf2199cc-cb5d-4021-8a6e-331e46cc2c6c&page=queryresults
+[0m12:52:24.578383 [debug] [Thread-1 (]: SQL status: OK in 0.331 seconds
+[0m12:52:24.591913 [debug] [Thread-1 (]: On snapshot.github_pulse.snap_repos: /* {"app": "dbt", "dbt_version": "1.11.11", "profile_name": "github_pulse", "target_name": "dev", "node_id": "snapshot.github_pulse.snap_repos"} */
+select * from (
+        select 
+    current_timestamp()
+ as dbt_snapshot_time
+    ) as __dbt_sbq
+    where false and current_timestamp() = current_timestamp()
+    limit 0
+
+[0m12:52:25.062061 [debug] [Thread-1 (]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=github-pulse-jumpy&j=bq:US:e489eac0-d29b-4349-a363-a6b008be55b3&page=queryresults
+[0m12:52:25.602445 [debug] [Thread-1 (]: SQL status: OK in 0.539 seconds
+[0m12:52:25.603814 [debug] [Thread-1 (]: Writing runtime sql for node "snapshot.github_pulse.snap_repos"
+[0m12:52:25.605829 [debug] [Thread-1 (]: On snapshot.github_pulse.snap_repos: /* {"app": "dbt", "dbt_version": "1.11.11", "profile_name": "github_pulse", "target_name": "dev", "node_id": "snapshot.github_pulse.snap_repos"} */
+
+      
+  
+    
+
+    create or replace table `github-pulse-jumpy`.`snapshots`.`snap_repos`
+      
+    
+    
+
+    
+    OPTIONS()
+    as (
+      
+    
+
+    select *,
+        to_hex(md5(concat(coalesce(cast(repo_id as string), ''), '|',coalesce(cast(dbt_snapshot_at as string), '')))) as dbt_scd_id,
+        dbt_snapshot_at as dbt_updated_at,
+        dbt_snapshot_at as dbt_valid_from,
+        
+  
+  coalesce(nullif(dbt_snapshot_at, dbt_snapshot_at), null)
+  as dbt_valid_to
+from (
+        
+
+
+
+with repos_union as (
+
+    select repo_id, repo_name, org_login, event_at
+    from `github-pulse-jumpy`.`github_pulse_analytics_dev_staging`.`stg_github__pull_request_events`
+    union distinct
+    select repo_id, repo_name, org_login, event_at
+    from `github-pulse-jumpy`.`github_pulse_analytics_dev_staging`.`stg_github__watch_events`
+    union distinct
+    select repo_id, repo_name, org_login, event_at
+    from `github-pulse-jumpy`.`github_pulse_analytics_dev_staging`.`stg_github__create_events`
+    union distinct
+    select repo_id, repo_name, org_login, event_at
+    from `github-pulse-jumpy`.`github_pulse_analytics_dev_staging`.`stg_github__delete_events`
+
+),
+
+latest_per_repo as (
+
+    select
+        repo_id,
+        repo_name,
+        org_login,
+        max(event_at) as dbt_snapshot_at
+
+    from repos_union
+    group by repo_id, repo_name, org_login
+
+)
+
+select * from latest_per_repo
+
+    ) sbq
+
+
+
+    );
+  
+  
+[0m12:52:26.836452 [debug] [Thread-1 (]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=github-pulse-jumpy&j=bq:US:ecdcfefb-aa89-4a20-b278-75845e1b2186&page=queryresults
+[0m12:52:32.310671 [debug] [Thread-1 (]: SQL status: OK in 5.473 seconds
+[0m12:52:32.557646 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '0d287c43-18b3-4c15-be80-757a7676dfe7', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x110c228d0>]}
+[0m12:52:32.558554 [info ] [Thread-1 (]: 1 of 1 OK snapshotted snapshots.snap_repos ..................................... [[32mCREATE TABLE (289.5k rows, 253.4 MiB processed)[0m in 9.43s]
+[0m12:52:32.559073 [debug] [Thread-1 (]: Finished running node snapshot.github_pulse.snap_repos
+[0m12:52:32.560177 [debug] [MainThread]: Opening a new connection, currently in state closed
+[0m12:52:32.627203 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m12:52:32.627311 [debug] [MainThread]: Connection 'snapshot.github_pulse.snap_repos' was properly closed.
+[0m12:52:32.627391 [debug] [MainThread]: Connection 'list_github-pulse-jumpy_snapshots' was properly closed.
+[0m12:52:32.627468 [debug] [MainThread]: Connection 'list_github-pulse-jumpy_github_pulse_analytics_dev_core' was properly closed.
+[0m12:52:32.627565 [info ] [MainThread]: 
+[0m12:52:32.627675 [info ] [MainThread]: Finished running 1 snapshot in 0 hours 0 minutes and 13.03 seconds (13.03s).
+[0m12:52:32.627907 [debug] [MainThread]: Command end result
+[0m12:52:32.642563 [debug] [MainThread]: Wrote artifact WritableManifest to /Users/perrikwong/Desktop/github_pulse/target/manifest.json
+[0m12:52:32.643225 [debug] [MainThread]: Wrote artifact SemanticManifest to /Users/perrikwong/Desktop/github_pulse/target/semantic_manifest.json
+[0m12:52:32.645614 [debug] [MainThread]: Wrote artifact RunExecutionResult to /Users/perrikwong/Desktop/github_pulse/target/run_results.json
+[0m12:52:32.645751 [info ] [MainThread]: 
+[0m12:52:32.645907 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m12:52:32.646012 [info ] [MainThread]: 
+[0m12:52:32.646121 [info ] [MainThread]: Done. PASS=1 WARN=0 ERROR=0 SKIP=0 NO-OP=0 TOTAL=1
+[0m12:52:32.646340 [debug] [MainThread]: Resource report: {"command_name": "snapshot", "command_success": true, "command_wall_clock_time": 16.07988, "process_in_blocks": "0", "process_kernel_time": 0.339967, "process_mem_max_rss": "244924416", "process_out_blocks": "0", "process_user_time": 2.0873}
+[0m12:52:32.646499 [debug] [MainThread]: Command `dbt snapshot` succeeded at 12:52:32.646470 after 16.08 seconds
+[0m12:52:32.646630 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x104d26710>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x104d25210>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1013c3050>]}
+[0m12:52:32.646750 [debug] [MainThread]: Flushing usage events
+[0m12:52:33.111596 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m13:00:32.342135 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x11a4ec290>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x11a5bb4d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x11a5bb790>]}
+
+
+============================== 13:00:32.344694 | 7f05ef45-2657-4cac-87ad-14e1605879a7 ==============================
+[0m13:00:32.344694 [info ] [MainThread]: Running with dbt=1.11.11
+[0m13:00:32.344942 [debug] [MainThread]: running dbt with arguments {'cache_selected_only': 'False', 'log_format': 'default', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'use_colors': 'True', 'printer_width': '80', 'quiet': 'False', 'introspect': 'True', 'invocation_command': 'dbt run --select marts.core', 'log_path': '/Users/perrikwong/Desktop/github_pulse/logs', 'write_json': 'True', 'log_cache_events': 'False', 'use_experimental_parser': 'False', 'fail_fast': 'False', 'target_path': 'None', 'partial_parse': 'True', 'version_check': 'True', 'static_parser': 'True', 'warn_error': 'None', 'profiles_dir': '/Users/perrikwong/.dbt', 'debug': 'False', 'no_print': 'None', 'send_anonymous_usage_stats': 'True', 'empty': 'False', 'indirect_selection': 'eager'}
+[0m13:00:32.944922 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '7f05ef45-2657-4cac-87ad-14e1605879a7', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x12b16c210>]}
+[0m13:00:32.965601 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '7f05ef45-2657-4cac-87ad-14e1605879a7', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10665ab90>]}
+[0m13:00:32.965856 [info ] [MainThread]: Registered adapter: bigquery=1.11.1
+[0m13:00:33.033038 [debug] [MainThread]: checksum: 30a8cc8fdcbf66701b0944d4ccce3fa46dd04b61e5df68b9f16d57b2e0e3f0be, vars: {}, profile: , target: , version: 1.11.11
+[0m13:00:33.114412 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m13:00:33.114595 [debug] [MainThread]: Nothing changed, skipping partial parsing.
+[0m13:00:33.114691 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m13:00:33.116974 [warn ] [MainThread]: [[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+There are 4 unused configuration paths:
+- models.github_pulse.marts.lifecycle
+- models.github_pulse.marts.engagement
+- models.github_pulse.intermediate
+- models.github_pulse.marts.pull_requests
+[0m13:00:33.137458 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '7f05ef45-2657-4cac-87ad-14e1605879a7', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x12ee30b10>]}
+[0m13:00:33.181266 [debug] [MainThread]: Wrote artifact WritableManifest to /Users/perrikwong/Desktop/github_pulse/target/manifest.json
+[0m13:00:33.182739 [debug] [MainThread]: Wrote artifact SemanticManifest to /Users/perrikwong/Desktop/github_pulse/target/semantic_manifest.json
+[0m13:00:33.189240 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '7f05ef45-2657-4cac-87ad-14e1605879a7', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x12f296e10>]}
+[0m13:00:33.189420 [info ] [MainThread]: Found 36 data tests, 7 models, 1 snapshot, 1 source, 549 macros
+[0m13:00:33.189542 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '7f05ef45-2657-4cac-87ad-14e1605879a7', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x12f2a7590>]}
+[0m13:00:33.190287 [info ] [MainThread]: 
+[0m13:00:33.190409 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
+[0m13:00:33.190504 [info ] [MainThread]: 
+[0m13:00:33.190684 [debug] [MainThread]: Acquiring new bigquery connection 'master'
+[0m13:00:33.192094 [debug] [ThreadPool]: Acquiring new bigquery connection 'list_github-pulse-jumpy'
+[0m13:00:33.192234 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m13:00:33.853446 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_github-pulse-jumpy, now create_github-pulse-jumpy_github_pulse_analytics_dev_core)
+[0m13:00:33.854633 [debug] [ThreadPool]: Creating schema "database: "github-pulse-jumpy"
+schema: "github_pulse_analytics_dev_core"
+"
+[0m13:00:33.869686 [debug] [ThreadPool]: On create_github-pulse-jumpy_github_pulse_analytics_dev_core: /* {"app": "dbt", "dbt_version": "1.11.11", "profile_name": "github_pulse", "target_name": "dev", "connection_name": "create_github-pulse-jumpy_github_pulse_analytics_dev_core"} */
+create schema if not exists `github-pulse-jumpy`.`github_pulse_analytics_dev_core`
+  
+[0m13:00:33.870131 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m13:00:34.563030 [debug] [ThreadPool]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=github-pulse-jumpy&j=bq:US:a095acca-352c-4b24-9153-6a11c8098c99&page=queryresults
+[0m13:00:35.459481 [debug] [ThreadPool]: SQL status: OK in 0.895 seconds
+[0m13:00:35.525908 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly create_github-pulse-jumpy_github_pulse_analytics_dev_core, now list_github-pulse-jumpy_snapshots)
+[0m13:00:35.526244 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m13:00:35.526443 [debug] [ThreadPool]: Acquiring new bigquery connection 'list_github-pulse-jumpy_github_pulse_analytics_dev_core'
+[0m13:00:35.526688 [debug] [ThreadPool]: Acquiring new bigquery connection 'list_github-pulse-jumpy_github_pulse_analytics_dev_staging'
+[0m13:00:35.526866 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m13:00:35.579273 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m13:00:36.306673 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '7f05ef45-2657-4cac-87ad-14e1605879a7', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x12ee02050>]}
+[0m13:00:36.308309 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m13:00:36.399286 [debug] [Thread-1 (]: Began running node model.github_pulse.dim_actor
+[0m13:00:36.399494 [debug] [Thread-2 (]: Began running node model.github_pulse.dim_date
+[0m13:00:36.399647 [debug] [Thread-3 (]: Began running node model.github_pulse.dim_repo
+[0m13:00:36.399842 [info ] [Thread-1 (]: 1 of 3 START sql table model github_pulse_analytics_dev_core.dim_actor ......... [RUN]
+[0m13:00:36.400043 [info ] [Thread-2 (]: 2 of 3 START sql table model github_pulse_analytics_dev_core.dim_date .......... [RUN]
+[0m13:00:36.400209 [info ] [Thread-3 (]: 3 of 3 START sql table model github_pulse_analytics_dev_core.dim_repo .......... [RUN]
+[0m13:00:36.400379 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list_github-pulse-jumpy_snapshots, now model.github_pulse.dim_actor)
+[0m13:00:36.400511 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly list_github-pulse-jumpy_github_pulse_analytics_dev_core, now model.github_pulse.dim_date)
+[0m13:00:36.400628 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly list_github-pulse-jumpy_github_pulse_analytics_dev_staging, now model.github_pulse.dim_repo)
+[0m13:00:36.400743 [debug] [Thread-1 (]: Began compiling node model.github_pulse.dim_actor
+[0m13:00:36.400850 [debug] [Thread-2 (]: Began compiling node model.github_pulse.dim_date
+[0m13:00:36.400948 [debug] [Thread-3 (]: Began compiling node model.github_pulse.dim_repo
+[0m13:00:36.404260 [debug] [Thread-1 (]: Writing injected SQL for node "model.github_pulse.dim_actor"
+[0m13:00:36.405155 [debug] [Thread-2 (]: Writing injected SQL for node "model.github_pulse.dim_date"
+[0m13:00:36.406124 [debug] [Thread-3 (]: Writing injected SQL for node "model.github_pulse.dim_repo"
+[0m13:00:36.406569 [debug] [Thread-1 (]: Began executing node model.github_pulse.dim_actor
+[0m13:00:36.406701 [debug] [Thread-2 (]: Began executing node model.github_pulse.dim_date
+[0m13:00:36.418818 [debug] [Thread-3 (]: Began executing node model.github_pulse.dim_repo
+[0m13:00:36.419222 [debug] [Thread-1 (]: Writing runtime sql for node "model.github_pulse.dim_actor"
+[0m13:00:36.420125 [debug] [Thread-2 (]: Writing runtime sql for node "model.github_pulse.dim_date"
+[0m13:00:36.421502 [debug] [Thread-3 (]: Writing runtime sql for node "model.github_pulse.dim_repo"
+[0m13:00:36.421915 [debug] [Thread-3 (]: On model.github_pulse.dim_repo: /* {"app": "dbt", "dbt_version": "1.11.11", "profile_name": "github_pulse", "target_name": "dev", "node_id": "model.github_pulse.dim_repo"} */
+
+  
+    
+
+    create or replace table `github-pulse-jumpy`.`github_pulse_analytics_dev_core`.`dim_repo`
+      
+    
+    
+
+    
+    OPTIONS()
+    as (
+      
+
+with snapshot_current as (
+
+    select
+        dbt_scd_id                                      as repo_sk,
+        repo_id,
+        repo_name,
+        org_login,
+        dbt_valid_from                                  as valid_from,
+        dbt_valid_to,
+        dbt_valid_to is null                            as is_current,
+        split(repo_name, '/')[safe_offset(0)]           as repo_owner,
+        split(repo_name, '/')[safe_offset(1)]           as repo_slug,
+        concat('https://github.com/', repo_name)        as repo_url
+    from `github-pulse-jumpy`.`snapshots`.`snap_repos`
+
+)
+
+select * from snapshot_current
+    );
+  
+[0m13:00:36.422129 [debug] [Thread-1 (]: On model.github_pulse.dim_actor: /* {"app": "dbt", "dbt_version": "1.11.11", "profile_name": "github_pulse", "target_name": "dev", "node_id": "model.github_pulse.dim_actor"} */
+
+  
+    
+
+    create or replace table `github-pulse-jumpy`.`github_pulse_analytics_dev_core`.`dim_actor`
+      
+    
+    
+
+    
+    OPTIONS()
+    as (
+      
+
+with actors_union as (
+
+    select actor_id, actor_login from `github-pulse-jumpy`.`github_pulse_analytics_dev_staging`.`stg_github__pull_request_events`
+    union distinct
+    select actor_id, actor_login from `github-pulse-jumpy`.`github_pulse_analytics_dev_staging`.`stg_github__watch_events`
+    union distinct
+    select actor_id, actor_login from `github-pulse-jumpy`.`github_pulse_analytics_dev_staging`.`stg_github__create_events`
+    union distinct
+    select actor_id, actor_login from `github-pulse-jumpy`.`github_pulse_analytics_dev_staging`.`stg_github__delete_events`
+
+),
+
+deduped as (
+
+    select
+        actor_id,
+        actor_login,
+        row_number() over (
+            partition by actor_id
+            order by actor_login
+        ) as rn
+    from actors_union
+
+),
+
+final as (
+
+    select
+        actor_id,
+        actor_login,
+        concat('https://github.com/', actor_login)  as profile_url,
+        current_timestamp()                         as dbt_updated_at
+    from deduped
+    where rn = 1
+
+)
+
+select * from final
+    );
+  
+[0m13:00:36.422307 [debug] [Thread-2 (]: On model.github_pulse.dim_date: /* {"app": "dbt", "dbt_version": "1.11.11", "profile_name": "github_pulse", "target_name": "dev", "node_id": "model.github_pulse.dim_date"} */
+
+  
+    
+
+    create or replace table `github-pulse-jumpy`.`github_pulse_analytics_dev_core`.`dim_date`
+      
+    
+    
+
+    
+    OPTIONS()
+    as (
+      
+
+with date_spine as (
+    select date_add
+)
+    );
+  
+[0m13:00:36.422463 [debug] [Thread-3 (]: Opening a new connection, currently in state closed
+[0m13:00:36.422605 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m13:00:36.422729 [debug] [Thread-2 (]: Opening a new connection, currently in state closed
+[0m13:00:37.123043 [debug] [Thread-2 (]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=github-pulse-jumpy&j=bq:US:cf1d142b-a534-48d3-b08b-85bd3c68c0fe&page=queryresults
+[0m13:00:37.124292 [error] [Thread-2 (]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=github-pulse-jumpy&j=bq:US:cf1d142b-a534-48d3-b08b-85bd3c68c0fe&page=queryresults
+[0m13:00:37.144879 [debug] [Thread-2 (]: Database Error in model dim_date (models/marts/core/dim_date.sql)
+  Syntax error: Unexpected ")" at [19:5]
+  compiled code at target/run/github_pulse/models/marts/core/dim_date.sql
+[0m13:00:37.148243 [debug] [Thread-2 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '7f05ef45-2657-4cac-87ad-14e1605879a7', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1335fa390>]}
+[0m13:00:37.149179 [error] [Thread-2 (]: 2 of 3 ERROR creating sql table model github_pulse_analytics_dev_core.dim_date . [[31mERROR[0m in 0.75s]
+[0m13:00:37.149788 [debug] [Thread-2 (]: Finished running node model.github_pulse.dim_date
+[0m13:00:37.150263 [debug] [Thread-7 (]: Marking all children of 'model.github_pulse.dim_date' to be skipped because of status 'error'.  Reason: Database Error in model dim_date (models/marts/core/dim_date.sql)
+  Syntax error: Unexpected ")" at [19:5]
+  compiled code at target/run/github_pulse/models/marts/core/dim_date.sql.
+[0m13:00:37.376246 [debug] [Thread-3 (]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=github-pulse-jumpy&j=bq:US:822272c2-b8a9-4e01-8626-e38b171655f7&page=queryresults
+[0m13:00:37.638334 [debug] [Thread-1 (]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=github-pulse-jumpy&j=bq:US:a4085a0a-3825-456a-bc39-700ae55069c2&page=queryresults
+[0m13:00:42.753748 [debug] [Thread-3 (]: SQL status: OK in 5.376 seconds
+[0m13:00:43.012008 [debug] [Thread-3 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '7f05ef45-2657-4cac-87ad-14e1605879a7', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x12eff7010>]}
+[0m13:00:43.013015 [info ] [Thread-3 (]: 3 of 3 OK created sql table model github_pulse_analytics_dev_core.dim_repo ..... [[32mCREATE TABLE (289.5k rows, 22.6 MiB processed)[0m in 6.61s]
+[0m13:00:43.013624 [debug] [Thread-3 (]: Finished running node model.github_pulse.dim_repo
+[0m13:00:43.985314 [debug] [Thread-1 (]: SQL status: OK in 6.345 seconds
+[0m13:00:44.320538 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '7f05ef45-2657-4cac-87ad-14e1605879a7', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x12eff6290>]}
+[0m13:00:44.321592 [info ] [Thread-1 (]: 1 of 3 OK created sql table model github_pulse_analytics_dev_core.dim_actor .... [[32mCREATE TABLE (230.3k rows, 193.7 MiB processed)[0m in 7.92s]
+[0m13:00:44.322353 [debug] [Thread-1 (]: Finished running node model.github_pulse.dim_actor
+[0m13:00:44.323583 [debug] [MainThread]: Opening a new connection, currently in state closed
+[0m13:00:44.410430 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m13:00:44.410708 [debug] [MainThread]: Connection 'model.github_pulse.dim_actor' was properly closed.
+[0m13:00:44.410812 [debug] [MainThread]: Connection 'model.github_pulse.dim_date' was properly closed.
+[0m13:00:44.410904 [debug] [MainThread]: Connection 'model.github_pulse.dim_repo' was properly closed.
+[0m13:00:44.411048 [info ] [MainThread]: 
+[0m13:00:44.411182 [info ] [MainThread]: Finished running 3 table models in 0 hours 0 minutes and 11.22 seconds (11.22s).
+[0m13:00:44.411544 [debug] [MainThread]: Command end result
+[0m13:00:44.426691 [debug] [MainThread]: Wrote artifact WritableManifest to /Users/perrikwong/Desktop/github_pulse/target/manifest.json
+[0m13:00:44.427557 [debug] [MainThread]: Wrote artifact SemanticManifest to /Users/perrikwong/Desktop/github_pulse/target/semantic_manifest.json
+[0m13:00:44.430059 [debug] [MainThread]: Wrote artifact RunExecutionResult to /Users/perrikwong/Desktop/github_pulse/target/run_results.json
+[0m13:00:44.430184 [info ] [MainThread]: 
+[0m13:00:44.430323 [info ] [MainThread]: [31mCompleted with 1 error, 0 partial successes, and 0 warnings:[0m
+[0m13:00:44.430429 [info ] [MainThread]: 
+[0m13:00:44.430563 [error] [MainThread]: [31mFailure in model dim_date (models/marts/core/dim_date.sql)[0m
+[0m13:00:44.430686 [error] [MainThread]:   Database Error in model dim_date (models/marts/core/dim_date.sql)
+  Syntax error: Unexpected ")" at [19:5]
+  compiled code at target/run/github_pulse/models/marts/core/dim_date.sql
+[0m13:00:44.430779 [info ] [MainThread]: 
+[0m13:00:44.430888 [info ] [MainThread]:   compiled code at target/compiled/github_pulse/models/marts/core/dim_date.sql
+[0m13:00:44.430979 [info ] [MainThread]: 
+[0m13:00:44.431086 [info ] [MainThread]: Done. PASS=2 WARN=0 ERROR=1 SKIP=0 NO-OP=0 TOTAL=3
+[0m13:00:44.431326 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": false, "command_wall_clock_time": 12.121955, "process_in_blocks": "0", "process_kernel_time": 0.277712, "process_mem_max_rss": "237895680", "process_out_blocks": "0", "process_user_time": 1.904435}
+[0m13:00:44.431499 [debug] [MainThread]: Command `dbt run` failed at 13:00:44.431468 after 12.12 seconds
+[0m13:00:44.431652 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x105752c90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x105752c10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x12f36e390>]}
+[0m13:00:44.431773 [debug] [MainThread]: Flushing usage events
+[0m13:00:44.926043 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m13:04:07.475506 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10711acd0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1071196d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x107127b90>]}
+
+
+============================== 13:04:07.478085 | a586a881-5bfd-4b79-a721-e85250923205 ==============================
+[0m13:04:07.478085 [info ] [MainThread]: Running with dbt=1.11.11
+[0m13:04:07.478345 [debug] [MainThread]: running dbt with arguments {'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'warn_error': 'None', 'log_cache_events': 'False', 'write_json': 'True', 'log_format': 'default', 'send_anonymous_usage_stats': 'True', 'empty': 'False', 'indirect_selection': 'eager', 'printer_width': '80', 'no_print': 'None', 'target_path': 'None', 'profiles_dir': '/Users/perrikwong/.dbt', 'log_path': '/Users/perrikwong/Desktop/github_pulse/logs', 'quiet': 'False', 'cache_selected_only': 'False', 'partial_parse': 'True', 'use_colors': 'True', 'fail_fast': 'False', 'version_check': 'True', 'static_parser': 'True', 'invocation_command': 'dbt run --select dim_date', 'introspect': 'True', 'debug': 'False', 'use_experimental_parser': 'False'}
+[0m13:04:08.080218 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'a586a881-5bfd-4b79-a721-e85250923205', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1113e4590>]}
+[0m13:04:08.101258 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': 'a586a881-5bfd-4b79-a721-e85250923205', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x104708d50>]}
+[0m13:04:08.101500 [info ] [MainThread]: Registered adapter: bigquery=1.11.1
+[0m13:04:08.169159 [debug] [MainThread]: checksum: 30a8cc8fdcbf66701b0944d4ccce3fa46dd04b61e5df68b9f16d57b2e0e3f0be, vars: {}, profile: , target: , version: 1.11.11
+[0m13:04:08.251335 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 1 files changed.
+[0m13:04:08.251674 [debug] [MainThread]: Partial parsing: updated file: github_pulse://models/marts/core/dim_date.sql
+[0m13:04:08.401753 [warn ] [MainThread]: [[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+There are 4 unused configuration paths:
+- models.github_pulse.marts.engagement
+- models.github_pulse.marts.lifecycle
+- models.github_pulse.intermediate
+- models.github_pulse.marts.pull_requests
+[0m13:04:08.407023 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'a586a881-5bfd-4b79-a721-e85250923205', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x111a72090>]}
+[0m13:04:08.491075 [debug] [MainThread]: Wrote artifact WritableManifest to /Users/perrikwong/Desktop/github_pulse/target/manifest.json
+[0m13:04:08.493547 [debug] [MainThread]: Wrote artifact SemanticManifest to /Users/perrikwong/Desktop/github_pulse/target/semantic_manifest.json
+[0m13:04:08.500116 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': 'a586a881-5bfd-4b79-a721-e85250923205', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x111670d50>]}
+[0m13:04:08.500309 [info ] [MainThread]: Found 36 data tests, 7 models, 1 snapshot, 1 source, 549 macros
+[0m13:04:08.500431 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'a586a881-5bfd-4b79-a721-e85250923205', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x111bf4890>]}
+[0m13:04:08.501119 [info ] [MainThread]: 
+[0m13:04:08.501239 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
+[0m13:04:08.501331 [info ] [MainThread]: 
+[0m13:04:08.501504 [debug] [MainThread]: Acquiring new bigquery connection 'master'
+[0m13:04:08.501817 [debug] [ThreadPool]: Acquiring new bigquery connection 'list_github-pulse-jumpy'
+[0m13:04:08.501950 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m13:04:09.102517 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_github-pulse-jumpy, now list_github-pulse-jumpy_github_pulse_analytics_dev_staging)
+[0m13:04:09.103369 [debug] [ThreadPool]: Acquiring new bigquery connection 'list_github-pulse-jumpy_snapshots'
+[0m13:04:09.104062 [debug] [ThreadPool]: Acquiring new bigquery connection 'list_github-pulse-jumpy_github_pulse_analytics_dev_core'
+[0m13:04:09.104431 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m13:04:09.104863 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m13:04:09.105235 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m13:04:09.737161 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'a586a881-5bfd-4b79-a721-e85250923205', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10fa16d90>]}
+[0m13:04:09.738153 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m13:04:09.818157 [debug] [Thread-1 (]: Began running node model.github_pulse.dim_date
+[0m13:04:09.818456 [info ] [Thread-1 (]: 1 of 1 START sql table model github_pulse_analytics_dev_core.dim_date .......... [RUN]
+[0m13:04:09.818665 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list_github-pulse-jumpy_github_pulse_analytics_dev_staging, now model.github_pulse.dim_date)
+[0m13:04:09.818799 [debug] [Thread-1 (]: Began compiling node model.github_pulse.dim_date
+[0m13:04:09.821984 [debug] [Thread-1 (]: Writing injected SQL for node "model.github_pulse.dim_date"
+[0m13:04:09.822264 [debug] [Thread-1 (]: Began executing node model.github_pulse.dim_date
+[0m13:04:09.836423 [debug] [Thread-1 (]: Writing runtime sql for node "model.github_pulse.dim_date"
+[0m13:04:09.836721 [debug] [Thread-1 (]: On model.github_pulse.dim_date: /* {"app": "dbt", "dbt_version": "1.11.11", "profile_name": "github_pulse", "target_name": "dev", "node_id": "model.github_pulse.dim_date"} */
+
+  
+    
+
+    create or replace table `github-pulse-jumpy`.`github_pulse_analytics_dev_core`.`dim_date`
+      
+    
+    
+
+    
+    OPTIONS()
+    as (
+      
+
+with date_spine as (
+
+    select
+        date_add(date('2024-01-01'), interval cast(n as int64) day) as calendar_date
+    from unnest(
+        generate_array(0, date_diff(date('2027-12-31'), date('2024-01-01'), day))
+    ) as n
+
+),
+
+final as (
+
+    select
+        cast(format_date('%Y%m%d', calendar_date) as int64)     as date_id,
+        calendar_date,
+        extract(year  from calendar_date)                        as year,
+        extract(month from calendar_date)                        as month,
+        extract(day   from calendar_date)                        as day,
+        extract(week  from calendar_date)                        as week_of_year,
+        extract(dayofweek from calendar_date)                    as day_of_week,
+        format_date('%B', calendar_date)                         as month_name,
+        format_date('%A', calendar_date)                         as day_name,
+        format_date('%Y-%m', calendar_date)                      as year_month,
+        format_date('%Y-W%W', calendar_date)                     as year_week,
+        extract(dayofweek from calendar_date) in (1, 7)          as is_weekend,
+        extract(dayofweek from calendar_date) not in (1, 7)      as is_weekday,
+        extract(quarter from calendar_date)                      as quarter,
+        concat('Q', cast(extract(quarter from calendar_date) as string)) as quarter_label
+    from date_spine
+
+)
+
+select * from final
+    );
+  
+[0m13:04:09.836911 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m13:04:10.648811 [debug] [Thread-1 (]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=github-pulse-jumpy&j=bq:US:d4d36e45-1152-4f16-8a2d-daff17596edd&page=queryresults
+[0m13:04:12.573771 [debug] [Thread-1 (]: SQL status: OK in 1.924 seconds
+[0m13:04:13.038580 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'a586a881-5bfd-4b79-a721-e85250923205', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x111c80250>]}
+[0m13:04:13.039233 [info ] [Thread-1 (]: 1 of 1 OK created sql table model github_pulse_analytics_dev_core.dim_date ..... [[32mCREATE TABLE (1.5k rows, 0 processed)[0m in 3.22s]
+[0m13:04:13.039666 [debug] [Thread-1 (]: Finished running node model.github_pulse.dim_date
+[0m13:04:13.040607 [debug] [MainThread]: Opening a new connection, currently in state closed
+[0m13:04:13.104625 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m13:04:13.104730 [debug] [MainThread]: Connection 'model.github_pulse.dim_date' was properly closed.
+[0m13:04:13.104816 [debug] [MainThread]: Connection 'list_github-pulse-jumpy_snapshots' was properly closed.
+[0m13:04:13.104903 [debug] [MainThread]: Connection 'list_github-pulse-jumpy_github_pulse_analytics_dev_core' was properly closed.
+[0m13:04:13.105009 [info ] [MainThread]: 
+[0m13:04:13.105122 [info ] [MainThread]: Finished running 1 table model in 0 hours 0 minutes and 4.60 seconds (4.60s).
+[0m13:04:13.105357 [debug] [MainThread]: Command end result
+[0m13:04:13.120423 [debug] [MainThread]: Wrote artifact WritableManifest to /Users/perrikwong/Desktop/github_pulse/target/manifest.json
+[0m13:04:13.121096 [debug] [MainThread]: Wrote artifact SemanticManifest to /Users/perrikwong/Desktop/github_pulse/target/semantic_manifest.json
+[0m13:04:13.123608 [debug] [MainThread]: Wrote artifact RunExecutionResult to /Users/perrikwong/Desktop/github_pulse/target/run_results.json
+[0m13:04:13.123711 [info ] [MainThread]: 
+[0m13:04:13.123852 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m13:04:13.123951 [info ] [MainThread]: 
+[0m13:04:13.124066 [info ] [MainThread]: Done. PASS=1 WARN=0 ERROR=0 SKIP=0 NO-OP=0 TOTAL=1
+[0m13:04:13.124296 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": true, "command_wall_clock_time": 5.6811748, "process_in_blocks": "0", "process_kernel_time": 0.248438, "process_mem_max_rss": "240615424", "process_out_blocks": "0", "process_user_time": 1.718578}
+[0m13:04:13.124443 [debug] [MainThread]: Command `dbt run` succeeded at 13:04:13.124415 after 5.68 seconds
+[0m13:04:13.124568 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10711b150>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10375f0d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x107042ed0>]}
+[0m13:04:13.124685 [debug] [MainThread]: Flushing usage events
+[0m13:04:13.513273 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m13:04:28.222892 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x106e5a210>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x107497510>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x107497d90>]}
+
+
+============================== 13:04:28.224383 | c6e19d56-5ef4-4e4b-94e5-d3a9085c1fb8 ==============================
+[0m13:04:28.224383 [info ] [MainThread]: Running with dbt=1.11.11
+[0m13:04:28.224617 [debug] [MainThread]: running dbt with arguments {'no_print': 'None', 'static_parser': 'True', 'log_path': '/Users/perrikwong/Desktop/github_pulse/logs', 'cache_selected_only': 'False', 'log_format': 'default', 'version_check': 'True', 'log_cache_events': 'False', 'warn_error': 'None', 'invocation_command': 'dbt test --select marts.core', 'fail_fast': 'False', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'indirect_selection': 'eager', 'send_anonymous_usage_stats': 'True', 'profiles_dir': '/Users/perrikwong/.dbt', 'target_path': 'None', 'partial_parse': 'True', 'quiet': 'False', 'empty': 'None', 'printer_width': '80', 'debug': 'False', 'introspect': 'True', 'use_colors': 'True', 'write_json': 'True', 'use_experimental_parser': 'False'}
+[0m13:04:28.572100 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'c6e19d56-5ef4-4e4b-94e5-d3a9085c1fb8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1117bffd0>]}
+[0m13:04:28.593184 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': 'c6e19d56-5ef4-4e4b-94e5-d3a9085c1fb8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x104a22b50>]}
+[0m13:04:28.593424 [info ] [MainThread]: Registered adapter: bigquery=1.11.1
+[0m13:04:28.656828 [debug] [MainThread]: checksum: 30a8cc8fdcbf66701b0944d4ccce3fa46dd04b61e5df68b9f16d57b2e0e3f0be, vars: {}, profile: , target: , version: 1.11.11
+[0m13:04:28.714841 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m13:04:28.715024 [debug] [MainThread]: Nothing changed, skipping partial parsing.
+[0m13:04:28.715125 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m13:04:28.717506 [warn ] [MainThread]: [[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+There are 4 unused configuration paths:
+- models.github_pulse.marts.lifecycle
+- models.github_pulse.marts.engagement
+- models.github_pulse.marts.pull_requests
+- models.github_pulse.intermediate
+[0m13:04:28.738402 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'c6e19d56-5ef4-4e4b-94e5-d3a9085c1fb8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x111a5ded0>]}
+[0m13:04:28.782708 [debug] [MainThread]: Wrote artifact WritableManifest to /Users/perrikwong/Desktop/github_pulse/target/manifest.json
+[0m13:04:28.783596 [debug] [MainThread]: Wrote artifact SemanticManifest to /Users/perrikwong/Desktop/github_pulse/target/semantic_manifest.json
+[0m13:04:28.793172 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': 'c6e19d56-5ef4-4e4b-94e5-d3a9085c1fb8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x111effad0>]}
+[0m13:04:28.793356 [info ] [MainThread]: Found 36 data tests, 7 models, 1 snapshot, 1 source, 549 macros
+[0m13:04:28.793478 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'c6e19d56-5ef4-4e4b-94e5-d3a9085c1fb8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x111bf8d50>]}
+[0m13:04:28.794356 [info ] [MainThread]: 
+[0m13:04:28.794474 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
+[0m13:04:28.794567 [info ] [MainThread]: 
+[0m13:04:28.794748 [debug] [MainThread]: Acquiring new bigquery connection 'master'
+[0m13:04:28.796345 [debug] [ThreadPool]: Acquiring new bigquery connection 'list_github-pulse-jumpy_github_pulse_analytics_dev_core'
+[0m13:04:28.796503 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m13:04:28.796647 [debug] [ThreadPool]: Acquiring new bigquery connection 'list_github-pulse-jumpy_github_pulse_analytics_dev_staging'
+[0m13:04:28.796927 [debug] [ThreadPool]: Acquiring new bigquery connection 'list_github-pulse-jumpy_snapshots'
+[0m13:04:28.849051 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m13:04:28.849907 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m13:04:29.454205 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'c6e19d56-5ef4-4e4b-94e5-d3a9085c1fb8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1073c6f50>]}
+[0m13:04:29.455242 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m13:04:29.535267 [debug] [Thread-1 (]: Began running node test.github_pulse.not_null_dim_actor_actor_id.cf5f0e2f0d
+[0m13:04:29.535471 [debug] [Thread-2 (]: Began running node test.github_pulse.not_null_dim_actor_actor_login.3c29d5d4bb
+[0m13:04:29.535628 [debug] [Thread-3 (]: Began running node test.github_pulse.not_null_dim_date_calendar_date.98c13acc7a
+[0m13:04:29.535742 [debug] [Thread-4 (]: Began running node test.github_pulse.not_null_dim_date_date_id.3077875806
+[0m13:04:29.535864 [info ] [Thread-1 (]: 1 of 11 START test not_null_dim_actor_actor_id ................................. [RUN]
+[0m13:04:29.536015 [info ] [Thread-2 (]: 2 of 11 START test not_null_dim_actor_actor_login .............................. [RUN]
+[0m13:04:29.536155 [info ] [Thread-3 (]: 3 of 11 START test not_null_dim_date_calendar_date ............................. [RUN]
+[0m13:04:29.536295 [info ] [Thread-4 (]: 4 of 11 START test not_null_dim_date_date_id ................................... [RUN]
+[0m13:04:29.536463 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list_github-pulse-jumpy_github_pulse_analytics_dev_core, now test.github_pulse.not_null_dim_actor_actor_id.cf5f0e2f0d)
+[0m13:04:29.536593 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly list_github-pulse-jumpy_github_pulse_analytics_dev_staging, now test.github_pulse.not_null_dim_actor_actor_login.3c29d5d4bb)
+[0m13:04:29.536806 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly list_github-pulse-jumpy_snapshots, now test.github_pulse.not_null_dim_date_calendar_date.98c13acc7a)
+[0m13:04:29.536965 [debug] [Thread-4 (]: Acquiring new bigquery connection 'test.github_pulse.not_null_dim_date_date_id.3077875806'
+[0m13:04:29.537079 [debug] [Thread-1 (]: Began compiling node test.github_pulse.not_null_dim_actor_actor_id.cf5f0e2f0d
+[0m13:04:29.537185 [debug] [Thread-2 (]: Began compiling node test.github_pulse.not_null_dim_actor_actor_login.3c29d5d4bb
+[0m13:04:29.537290 [debug] [Thread-3 (]: Began compiling node test.github_pulse.not_null_dim_date_calendar_date.98c13acc7a
+[0m13:04:29.537399 [debug] [Thread-4 (]: Began compiling node test.github_pulse.not_null_dim_date_date_id.3077875806
+[0m13:04:29.544305 [debug] [Thread-1 (]: Writing injected SQL for node "test.github_pulse.not_null_dim_actor_actor_id.cf5f0e2f0d"
+[0m13:04:29.545698 [debug] [Thread-2 (]: Writing injected SQL for node "test.github_pulse.not_null_dim_actor_actor_login.3c29d5d4bb"
+[0m13:04:29.547003 [debug] [Thread-3 (]: Writing injected SQL for node "test.github_pulse.not_null_dim_date_calendar_date.98c13acc7a"
+[0m13:04:29.548279 [debug] [Thread-4 (]: Writing injected SQL for node "test.github_pulse.not_null_dim_date_date_id.3077875806"
+[0m13:04:29.548683 [debug] [Thread-2 (]: Began executing node test.github_pulse.not_null_dim_actor_actor_login.3c29d5d4bb
+[0m13:04:29.548834 [debug] [Thread-3 (]: Began executing node test.github_pulse.not_null_dim_date_calendar_date.98c13acc7a
+[0m13:04:29.548971 [debug] [Thread-1 (]: Began executing node test.github_pulse.not_null_dim_actor_actor_id.cf5f0e2f0d
+[0m13:04:29.557257 [debug] [Thread-2 (]: Writing runtime sql for node "test.github_pulse.not_null_dim_actor_actor_login.3c29d5d4bb"
+[0m13:04:29.557391 [debug] [Thread-4 (]: Began executing node test.github_pulse.not_null_dim_date_date_id.3077875806
+[0m13:04:29.558306 [debug] [Thread-3 (]: Writing runtime sql for node "test.github_pulse.not_null_dim_date_calendar_date.98c13acc7a"
+[0m13:04:29.559124 [debug] [Thread-1 (]: Writing runtime sql for node "test.github_pulse.not_null_dim_actor_actor_id.cf5f0e2f0d"
+[0m13:04:29.560029 [debug] [Thread-4 (]: Writing runtime sql for node "test.github_pulse.not_null_dim_date_date_id.3077875806"
+[0m13:04:29.560326 [debug] [Thread-2 (]: On test.github_pulse.not_null_dim_actor_actor_login.3c29d5d4bb: /* {"app": "dbt", "dbt_version": "1.11.11", "profile_name": "github_pulse", "target_name": "dev", "node_id": "test.github_pulse.not_null_dim_actor_actor_login.3c29d5d4bb"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select actor_login
+from `github-pulse-jumpy`.`github_pulse_analytics_dev_core`.`dim_actor`
+where actor_login is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m13:04:29.560537 [debug] [Thread-3 (]: On test.github_pulse.not_null_dim_date_calendar_date.98c13acc7a: /* {"app": "dbt", "dbt_version": "1.11.11", "profile_name": "github_pulse", "target_name": "dev", "node_id": "test.github_pulse.not_null_dim_date_calendar_date.98c13acc7a"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select calendar_date
+from `github-pulse-jumpy`.`github_pulse_analytics_dev_core`.`dim_date`
+where calendar_date is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m13:04:29.560698 [debug] [Thread-2 (]: Opening a new connection, currently in state closed
+[0m13:04:29.560847 [debug] [Thread-1 (]: On test.github_pulse.not_null_dim_actor_actor_id.cf5f0e2f0d: /* {"app": "dbt", "dbt_version": "1.11.11", "profile_name": "github_pulse", "target_name": "dev", "node_id": "test.github_pulse.not_null_dim_actor_actor_id.cf5f0e2f0d"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select actor_id
+from `github-pulse-jumpy`.`github_pulse_analytics_dev_core`.`dim_actor`
+where actor_id is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m13:04:29.560998 [debug] [Thread-3 (]: Opening a new connection, currently in state closed
+[0m13:04:29.561147 [debug] [Thread-4 (]: On test.github_pulse.not_null_dim_date_date_id.3077875806: /* {"app": "dbt", "dbt_version": "1.11.11", "profile_name": "github_pulse", "target_name": "dev", "node_id": "test.github_pulse.not_null_dim_date_date_id.3077875806"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select date_id
+from `github-pulse-jumpy`.`github_pulse_analytics_dev_core`.`dim_date`
+where date_id is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m13:04:29.561326 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m13:04:29.661001 [debug] [Thread-4 (]: Opening a new connection, currently in state init
+[0m13:04:30.598675 [debug] [Thread-4 (]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=github-pulse-jumpy&j=bq:US:32416999-b96f-4033-9528-d84a5e4d63bd&page=queryresults
+[0m13:04:30.599919 [debug] [Thread-3 (]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=github-pulse-jumpy&j=bq:US:eef575f0-22c2-4e32-833c-60a06c64abd6&page=queryresults
+[0m13:04:30.642786 [debug] [Thread-2 (]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=github-pulse-jumpy&j=bq:US:9d29d363-5f21-488d-8c5b-e713292b5abe&page=queryresults
+[0m13:04:30.691756 [debug] [Thread-1 (]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=github-pulse-jumpy&j=bq:US:81a20145-604b-4c6c-a819-1fe33745f486&page=queryresults
+[0m13:04:30.905216 [debug] [Thread-4 (]: SQL status: OK in 0.304 seconds
+[0m13:04:30.906251 [debug] [Thread-3 (]: SQL status: OK in 0.304 seconds
+[0m13:04:30.920178 [debug] [Thread-1 (]: SQL status: OK in 0.228 seconds
+[0m13:04:30.986475 [debug] [Thread-2 (]: SQL status: OK in 0.343 seconds
+[0m13:04:31.427095 [info ] [Thread-4 (]: 4 of 11 PASS not_null_dim_date_date_id ......................................... [[32mPASS[0m in 1.89s]
+[0m13:04:31.428152 [debug] [Thread-4 (]: Finished running node test.github_pulse.not_null_dim_date_date_id.3077875806
+[0m13:04:31.428721 [debug] [Thread-4 (]: Began running node test.github_pulse.not_null_dim_repo_is_current.56a592eb97
+[0m13:04:31.429336 [info ] [Thread-4 (]: 5 of 11 START test not_null_dim_repo_is_current ................................ [RUN]
+[0m13:04:31.429951 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly test.github_pulse.not_null_dim_date_date_id.3077875806, now test.github_pulse.not_null_dim_repo_is_current.56a592eb97)
+[0m13:04:31.430435 [debug] [Thread-4 (]: Began compiling node test.github_pulse.not_null_dim_repo_is_current.56a592eb97
+[0m13:04:31.436026 [debug] [Thread-4 (]: Writing injected SQL for node "test.github_pulse.not_null_dim_repo_is_current.56a592eb97"
+[0m13:04:31.436856 [debug] [Thread-4 (]: Began executing node test.github_pulse.not_null_dim_repo_is_current.56a592eb97
+[0m13:04:31.439088 [debug] [Thread-4 (]: Writing runtime sql for node "test.github_pulse.not_null_dim_repo_is_current.56a592eb97"
+[0m13:04:31.442048 [debug] [Thread-4 (]: On test.github_pulse.not_null_dim_repo_is_current.56a592eb97: /* {"app": "dbt", "dbt_version": "1.11.11", "profile_name": "github_pulse", "target_name": "dev", "node_id": "test.github_pulse.not_null_dim_repo_is_current.56a592eb97"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select is_current
+from `github-pulse-jumpy`.`github_pulse_analytics_dev_core`.`dim_repo`
+where is_current is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m13:04:31.441752 [info ] [Thread-1 (]: 1 of 11 PASS not_null_dim_actor_actor_id ....................................... [[32mPASS[0m in 1.91s]
+[0m13:04:31.442476 [debug] [Thread-4 (]: Opening a new connection, currently in state closed
+[0m13:04:31.442820 [debug] [Thread-1 (]: Finished running node test.github_pulse.not_null_dim_actor_actor_id.cf5f0e2f0d
+[0m13:04:31.443148 [debug] [Thread-1 (]: Began running node test.github_pulse.not_null_dim_repo_repo_id.5882758698
+[0m13:04:31.508596 [info ] [Thread-1 (]: 6 of 11 START test not_null_dim_repo_repo_id ................................... [RUN]
+[0m13:04:31.509769 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.github_pulse.not_null_dim_actor_actor_id.cf5f0e2f0d, now test.github_pulse.not_null_dim_repo_repo_id.5882758698)
+[0m13:04:31.510220 [debug] [Thread-1 (]: Began compiling node test.github_pulse.not_null_dim_repo_repo_id.5882758698
+[0m13:04:31.511044 [info ] [Thread-2 (]: 2 of 11 PASS not_null_dim_actor_actor_login .................................... [[32mPASS[0m in 1.97s]
+[0m13:04:31.511547 [info ] [Thread-3 (]: 3 of 11 PASS not_null_dim_date_calendar_date ................................... [[32mPASS[0m in 1.97s]
+[0m13:04:31.513297 [debug] [Thread-1 (]: Writing injected SQL for node "test.github_pulse.not_null_dim_repo_repo_id.5882758698"
+[0m13:04:31.513702 [debug] [Thread-2 (]: Finished running node test.github_pulse.not_null_dim_actor_actor_login.3c29d5d4bb
+[0m13:04:31.513927 [debug] [Thread-3 (]: Finished running node test.github_pulse.not_null_dim_date_calendar_date.98c13acc7a
+[0m13:04:31.514230 [debug] [Thread-2 (]: Began running node test.github_pulse.not_null_dim_repo_repo_sk.ab4723b007
+[0m13:04:31.514423 [debug] [Thread-3 (]: Began running node test.github_pulse.unique_dim_actor_actor_id.dd3f6b93f4
+[0m13:04:31.514606 [info ] [Thread-2 (]: 7 of 11 START test not_null_dim_repo_repo_sk ................................... [RUN]
+[0m13:04:31.514770 [info ] [Thread-3 (]: 8 of 11 START test unique_dim_actor_actor_id ................................... [RUN]
+[0m13:04:31.514904 [debug] [Thread-1 (]: Began executing node test.github_pulse.not_null_dim_repo_repo_id.5882758698
+[0m13:04:31.515052 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly test.github_pulse.not_null_dim_actor_actor_login.3c29d5d4bb, now test.github_pulse.not_null_dim_repo_repo_sk.ab4723b007)
+[0m13:04:31.515184 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly test.github_pulse.not_null_dim_date_calendar_date.98c13acc7a, now test.github_pulse.unique_dim_actor_actor_id.dd3f6b93f4)
+[0m13:04:31.516585 [debug] [Thread-1 (]: Writing runtime sql for node "test.github_pulse.not_null_dim_repo_repo_id.5882758698"
+[0m13:04:31.516736 [debug] [Thread-2 (]: Began compiling node test.github_pulse.not_null_dim_repo_repo_sk.ab4723b007
+[0m13:04:31.516870 [debug] [Thread-3 (]: Began compiling node test.github_pulse.unique_dim_actor_actor_id.dd3f6b93f4
+[0m13:04:31.518303 [debug] [Thread-2 (]: Writing injected SQL for node "test.github_pulse.not_null_dim_repo_repo_sk.ab4723b007"
+[0m13:04:31.520435 [debug] [Thread-3 (]: Writing injected SQL for node "test.github_pulse.unique_dim_actor_actor_id.dd3f6b93f4"
+[0m13:04:31.520641 [debug] [Thread-1 (]: On test.github_pulse.not_null_dim_repo_repo_id.5882758698: /* {"app": "dbt", "dbt_version": "1.11.11", "profile_name": "github_pulse", "target_name": "dev", "node_id": "test.github_pulse.not_null_dim_repo_repo_id.5882758698"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select repo_id
+from `github-pulse-jumpy`.`github_pulse_analytics_dev_core`.`dim_repo`
+where repo_id is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m13:04:31.520846 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m13:04:31.520966 [debug] [Thread-2 (]: Began executing node test.github_pulse.not_null_dim_repo_repo_sk.ab4723b007
+[0m13:04:31.521105 [debug] [Thread-3 (]: Began executing node test.github_pulse.unique_dim_actor_actor_id.dd3f6b93f4
+[0m13:04:31.570836 [debug] [Thread-2 (]: Writing runtime sql for node "test.github_pulse.not_null_dim_repo_repo_sk.ab4723b007"
+[0m13:04:31.571974 [debug] [Thread-3 (]: Writing runtime sql for node "test.github_pulse.unique_dim_actor_actor_id.dd3f6b93f4"
+[0m13:04:31.572302 [debug] [Thread-2 (]: On test.github_pulse.not_null_dim_repo_repo_sk.ab4723b007: /* {"app": "dbt", "dbt_version": "1.11.11", "profile_name": "github_pulse", "target_name": "dev", "node_id": "test.github_pulse.not_null_dim_repo_repo_sk.ab4723b007"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select repo_sk
+from `github-pulse-jumpy`.`github_pulse_analytics_dev_core`.`dim_repo`
+where repo_sk is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m13:04:31.572455 [debug] [Thread-2 (]: Opening a new connection, currently in state closed
+[0m13:04:31.572643 [debug] [Thread-3 (]: On test.github_pulse.unique_dim_actor_actor_id.dd3f6b93f4: /* {"app": "dbt", "dbt_version": "1.11.11", "profile_name": "github_pulse", "target_name": "dev", "node_id": "test.github_pulse.unique_dim_actor_actor_id.dd3f6b93f4"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+with dbt_test__target as (
+
+  select actor_id as unique_field
+  from `github-pulse-jumpy`.`github_pulse_analytics_dev_core`.`dim_actor`
+  where actor_id is not null
+
+)
+
+select
+    unique_field,
+    count(*) as n_records
+
+from dbt_test__target
+group by unique_field
+having count(*) > 1
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m13:04:31.622620 [debug] [Thread-3 (]: Opening a new connection, currently in state closed
+[0m13:04:32.339402 [debug] [Thread-4 (]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=github-pulse-jumpy&j=bq:US:13db339b-2fe7-45e6-ad5a-3b58e07c2933&page=queryresults
+[0m13:04:32.394230 [debug] [Thread-1 (]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=github-pulse-jumpy&j=bq:US:ed1f02af-a9f4-4e06-9241-2621aad206b5&page=queryresults
+[0m13:04:32.402125 [debug] [Thread-2 (]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=github-pulse-jumpy&j=bq:US:8cb56241-9ea2-4a48-b59a-d802f334626f&page=queryresults
+[0m13:04:32.411210 [debug] [Thread-3 (]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=github-pulse-jumpy&j=bq:US:24ebd03a-a7be-4f09-84f3-f308d3c94c8d&page=queryresults
+[0m13:04:32.560492 [debug] [Thread-4 (]: SQL status: OK in 0.219 seconds
+[0m13:04:32.596115 [debug] [Thread-1 (]: SQL status: OK in 0.201 seconds
+[0m13:04:32.643732 [debug] [Thread-2 (]: SQL status: OK in 0.241 seconds
+[0m13:04:32.644618 [debug] [Thread-3 (]: SQL status: OK in 0.233 seconds
+[0m13:04:33.043563 [info ] [Thread-1 (]: 6 of 11 PASS not_null_dim_repo_repo_id ......................................... [[32mPASS[0m in 1.53s]
+[0m13:04:33.044726 [debug] [Thread-1 (]: Finished running node test.github_pulse.not_null_dim_repo_repo_id.5882758698
+[0m13:04:33.045314 [debug] [Thread-1 (]: Began running node test.github_pulse.unique_dim_date_calendar_date.abd0942d2a
+[0m13:04:33.047169 [info ] [Thread-1 (]: 9 of 11 START test unique_dim_date_calendar_date ............................... [RUN]
+[0m13:04:33.049902 [info ] [Thread-3 (]: 8 of 11 PASS unique_dim_actor_actor_id ......................................... [[32mPASS[0m in 1.53s]
+[0m13:04:33.050450 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.github_pulse.not_null_dim_repo_repo_id.5882758698, now test.github_pulse.unique_dim_date_calendar_date.abd0942d2a)
+[0m13:04:33.051034 [debug] [Thread-3 (]: Finished running node test.github_pulse.unique_dim_actor_actor_id.dd3f6b93f4
+[0m13:04:33.051419 [debug] [Thread-1 (]: Began compiling node test.github_pulse.unique_dim_date_calendar_date.abd0942d2a
+[0m13:04:33.051827 [debug] [Thread-3 (]: Began running node test.github_pulse.unique_dim_date_date_id.7286dcb90d
+[0m13:04:33.057387 [debug] [Thread-1 (]: Writing injected SQL for node "test.github_pulse.unique_dim_date_calendar_date.abd0942d2a"
+[0m13:04:33.057694 [info ] [Thread-3 (]: 10 of 11 START test unique_dim_date_date_id .................................... [RUN]
+[0m13:04:33.058084 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly test.github_pulse.unique_dim_actor_actor_id.dd3f6b93f4, now test.github_pulse.unique_dim_date_date_id.7286dcb90d)
+[0m13:04:33.058304 [debug] [Thread-3 (]: Began compiling node test.github_pulse.unique_dim_date_date_id.7286dcb90d
+[0m13:04:33.061700 [debug] [Thread-3 (]: Writing injected SQL for node "test.github_pulse.unique_dim_date_date_id.7286dcb90d"
+[0m13:04:33.061953 [debug] [Thread-1 (]: Began executing node test.github_pulse.unique_dim_date_calendar_date.abd0942d2a
+[0m13:04:33.063346 [debug] [Thread-1 (]: Writing runtime sql for node "test.github_pulse.unique_dim_date_calendar_date.abd0942d2a"
+[0m13:04:33.063631 [debug] [Thread-3 (]: Began executing node test.github_pulse.unique_dim_date_date_id.7286dcb90d
+[0m13:04:33.064777 [debug] [Thread-3 (]: Writing runtime sql for node "test.github_pulse.unique_dim_date_date_id.7286dcb90d"
+[0m13:04:33.065042 [debug] [Thread-1 (]: On test.github_pulse.unique_dim_date_calendar_date.abd0942d2a: /* {"app": "dbt", "dbt_version": "1.11.11", "profile_name": "github_pulse", "target_name": "dev", "node_id": "test.github_pulse.unique_dim_date_calendar_date.abd0942d2a"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+with dbt_test__target as (
+
+  select calendar_date as unique_field
+  from `github-pulse-jumpy`.`github_pulse_analytics_dev_core`.`dim_date`
+  where calendar_date is not null
+
+)
+
+select
+    unique_field,
+    count(*) as n_records
+
+from dbt_test__target
+group by unique_field
+having count(*) > 1
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m13:04:33.065276 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m13:04:33.065437 [debug] [Thread-3 (]: On test.github_pulse.unique_dim_date_date_id.7286dcb90d: /* {"app": "dbt", "dbt_version": "1.11.11", "profile_name": "github_pulse", "target_name": "dev", "node_id": "test.github_pulse.unique_dim_date_date_id.7286dcb90d"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+with dbt_test__target as (
+
+  select date_id as unique_field
+  from `github-pulse-jumpy`.`github_pulse_analytics_dev_core`.`dim_date`
+  where date_id is not null
+
+)
+
+select
+    unique_field,
+    count(*) as n_records
+
+from dbt_test__target
+group by unique_field
+having count(*) > 1
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m13:04:33.065669 [debug] [Thread-3 (]: Opening a new connection, currently in state closed
+[0m13:04:33.183505 [info ] [Thread-2 (]: 7 of 11 PASS not_null_dim_repo_repo_sk ......................................... [[32mPASS[0m in 1.67s]
+[0m13:04:33.184007 [debug] [Thread-2 (]: Finished running node test.github_pulse.not_null_dim_repo_repo_sk.ab4723b007
+[0m13:04:33.184262 [debug] [Thread-2 (]: Began running node test.github_pulse.unique_dim_repo_repo_sk.b6de0dc7ba
+[0m13:04:33.184464 [info ] [Thread-2 (]: 11 of 11 START test unique_dim_repo_repo_sk .................................... [RUN]
+[0m13:04:33.184623 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly test.github_pulse.not_null_dim_repo_repo_sk.ab4723b007, now test.github_pulse.unique_dim_repo_repo_sk.b6de0dc7ba)
+[0m13:04:33.184955 [debug] [Thread-2 (]: Began compiling node test.github_pulse.unique_dim_repo_repo_sk.b6de0dc7ba
+[0m13:04:33.186674 [debug] [Thread-2 (]: Writing injected SQL for node "test.github_pulse.unique_dim_repo_repo_sk.b6de0dc7ba"
+[0m13:04:33.187124 [debug] [Thread-2 (]: Began executing node test.github_pulse.unique_dim_repo_repo_sk.b6de0dc7ba
+[0m13:04:33.188057 [debug] [Thread-2 (]: Writing runtime sql for node "test.github_pulse.unique_dim_repo_repo_sk.b6de0dc7ba"
+[0m13:04:33.188404 [debug] [Thread-2 (]: On test.github_pulse.unique_dim_repo_repo_sk.b6de0dc7ba: /* {"app": "dbt", "dbt_version": "1.11.11", "profile_name": "github_pulse", "target_name": "dev", "node_id": "test.github_pulse.unique_dim_repo_repo_sk.b6de0dc7ba"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+with dbt_test__target as (
+
+  select repo_sk as unique_field
+  from `github-pulse-jumpy`.`github_pulse_analytics_dev_core`.`dim_repo`
+  where repo_sk is not null
+
+)
+
+select
+    unique_field,
+    count(*) as n_records
+
+from dbt_test__target
+group by unique_field
+having count(*) > 1
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m13:04:33.188566 [debug] [Thread-2 (]: Opening a new connection, currently in state closed
+[0m13:04:33.772033 [info ] [Thread-4 (]: 5 of 11 PASS not_null_dim_repo_is_current ...................................... [[32mPASS[0m in 2.34s]
+[0m13:04:33.773225 [debug] [Thread-4 (]: Finished running node test.github_pulse.not_null_dim_repo_is_current.56a592eb97
+[0m13:04:33.835393 [debug] [Thread-3 (]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=github-pulse-jumpy&j=bq:US:16de3131-de09-48ed-9f25-b561d713cf20&page=queryresults
+[0m13:04:33.994796 [debug] [Thread-1 (]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=github-pulse-jumpy&j=bq:US:82472215-61b6-4089-8172-4ee0d1607672&page=queryresults
+[0m13:04:34.132085 [debug] [Thread-3 (]: SQL status: OK in 0.296 seconds
+[0m13:04:34.183583 [debug] [Thread-2 (]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=github-pulse-jumpy&j=bq:US:0caa2137-6992-42e3-9035-9f01d908b984&page=queryresults
+[0m13:04:34.199038 [debug] [Thread-1 (]: SQL status: OK in 0.203 seconds
+[0m13:04:34.397633 [debug] [Thread-2 (]: SQL status: OK in 0.213 seconds
+[0m13:04:34.526042 [info ] [Thread-3 (]: 10 of 11 PASS unique_dim_date_date_id .......................................... [[32mPASS[0m in 1.47s]
+[0m13:04:34.526834 [debug] [Thread-3 (]: Finished running node test.github_pulse.unique_dim_date_date_id.7286dcb90d
+[0m13:04:34.620155 [info ] [Thread-1 (]: 9 of 11 PASS unique_dim_date_calendar_date ..................................... [[32mPASS[0m in 1.57s]
+[0m13:04:34.620998 [debug] [Thread-1 (]: Finished running node test.github_pulse.unique_dim_date_calendar_date.abd0942d2a
+[0m13:04:34.810587 [info ] [Thread-2 (]: 11 of 11 PASS unique_dim_repo_repo_sk .......................................... [[32mPASS[0m in 1.63s]
+[0m13:04:34.811643 [debug] [Thread-2 (]: Finished running node test.github_pulse.unique_dim_repo_repo_sk.b6de0dc7ba
+[0m13:04:34.813895 [debug] [MainThread]: Opening a new connection, currently in state closed
+[0m13:04:34.893378 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m13:04:34.893618 [debug] [MainThread]: Connection 'test.github_pulse.unique_dim_date_calendar_date.abd0942d2a' was properly closed.
+[0m13:04:34.893725 [debug] [MainThread]: Connection 'test.github_pulse.unique_dim_repo_repo_sk.b6de0dc7ba' was properly closed.
+[0m13:04:34.893817 [debug] [MainThread]: Connection 'test.github_pulse.unique_dim_date_date_id.7286dcb90d' was properly closed.
+[0m13:04:34.893905 [debug] [MainThread]: Connection 'test.github_pulse.not_null_dim_repo_is_current.56a592eb97' was properly closed.
+[0m13:04:34.894043 [info ] [MainThread]: 
+[0m13:04:34.894165 [info ] [MainThread]: Finished running 11 data tests in 0 hours 0 minutes and 6.10 seconds (6.10s).
+[0m13:04:34.894851 [debug] [MainThread]: Command end result
+[0m13:04:34.910654 [debug] [MainThread]: Wrote artifact WritableManifest to /Users/perrikwong/Desktop/github_pulse/target/manifest.json
+[0m13:04:34.911397 [debug] [MainThread]: Wrote artifact SemanticManifest to /Users/perrikwong/Desktop/github_pulse/target/semantic_manifest.json
+[0m13:04:34.914048 [debug] [MainThread]: Wrote artifact RunExecutionResult to /Users/perrikwong/Desktop/github_pulse/target/run_results.json
+[0m13:04:34.914155 [info ] [MainThread]: 
+[0m13:04:34.914286 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m13:04:34.914387 [info ] [MainThread]: 
+[0m13:04:34.914504 [info ] [MainThread]: Done. PASS=11 WARN=0 ERROR=0 SKIP=0 NO-OP=0 TOTAL=11
+[0m13:04:34.914749 [debug] [MainThread]: Resource report: {"command_name": "test", "command_success": true, "command_wall_clock_time": 6.7174106, "process_in_blocks": "0", "process_kernel_time": 0.222836, "process_mem_max_rss": "240418816", "process_out_blocks": "0", "process_user_time": 2.336742}
+[0m13:04:34.914909 [debug] [MainThread]: Command `dbt test` succeeded at 13:04:34.914880 after 6.72 seconds
+[0m13:04:34.915036 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1074943d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1074a6110>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x103bcb0d0>]}
+[0m13:04:34.915171 [debug] [MainThread]: Flushing usage events
+[0m13:04:35.237803 [debug] [MainThread]: An error was encountered while trying to flush usage events
