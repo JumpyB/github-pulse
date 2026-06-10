@@ -1,0 +1,29 @@
+version: 2
+
+models:
+  - name: fct_pull_requests
+    description: |
+      One row per GitHub PullRequestEvent action.
+      Grain: 1 event = 1 row (a PR can have multiple events: opened, labeled, merged...).
+      
+      Key metrics derivable from this table:
+      - Daily PR opened count (WHERE is_opened)
+      - Daily PR merged count (WHERE is_merged)
+      - Merge rate = merged / (merged + closed_without_merge)
+      - Label velocity = labeled / opened
+    columns:
+      - name: pr_event_sk
+        description: "Surrogate key for this fact row."
+        data_tests:
+          - unique
+          - not_null
+      - name: event_id
+        data_tests:
+          - unique
+          - not_null
+      - name: pr_action
+        data_tests:
+          - not_null
+      - name: event_at
+        data_tests:
+          - not_null

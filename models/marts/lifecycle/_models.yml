@@ -1,0 +1,30 @@
+version: 2
+
+models:
+  - name: fct_repo_lifecycle
+    description: |
+      One row per CreateEvent or DeleteEvent.
+      Grain: 1 lifecycle action = 1 row.
+      
+      Key metrics:
+      - Daily branch creation/deletion count
+      - Net branch growth (created - deleted)
+      - Repo creation events
+    columns:
+      - name: lifecycle_sk
+        data_tests:
+          - unique
+          - not_null
+      - name: event_id
+        data_tests:
+          - unique
+          - not_null
+      - name: lifecycle_action
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: [created, deleted]
+      - name: event_at
+        data_tests:
+          - not_null

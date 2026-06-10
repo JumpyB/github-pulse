@@ -8,6 +8,17 @@ with source as (
 
 ),
 
+deduplicated as (
+
+    select *
+    from source
+    qualify row_number() over (
+        partition by id
+        order by created_at
+    ) = 1
+
+),
+
 renamed as (
 
     select
@@ -42,7 +53,7 @@ renamed as (
         -- timestamp
         created_at                                                          as event_at
 
-    from source
+    from deduplicated
 
 )
 

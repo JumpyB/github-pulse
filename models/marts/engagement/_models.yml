@@ -1,0 +1,24 @@
+version: 2
+
+models:
+  - name: fct_repo_engagement
+    description: |
+      One row per WatchEvent (= a user starring a repository).
+      Grain: 1 star action = 1 row.
+      
+      Key metrics:
+      - Daily stars per repo (trending)
+      - Top repos by stars added in last N days
+      - Star velocity (stars per hour)
+    columns:
+      - name: engagement_sk
+        data_tests:
+          - unique
+          - not_null
+      - name: event_id
+        data_tests:
+          - unique
+          - not_null
+      - name: event_at
+        data_tests:
+          - not_null

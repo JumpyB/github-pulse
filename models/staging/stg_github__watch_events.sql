@@ -5,10 +5,16 @@ with source as (
 ),
 
 deduplicated as (
+
     select *
     from source
-    qualify row_number() over (partition by id order by created_at) = 1
+    qualify row_number() over (
+        partition by id
+        order by created_at
+    ) = 1
+
 ),
+
 
 renamed as (
     select
