@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.python-version
+
+# dbt — 编译产物，不进 repo
+target/
+dbt_packages/
+logs/
+.user.yml
+
+# Secrets
+*.json
+.gcp/
+secrets/
+credentials/
+
+# uv
+uv.lock
+
+# OS
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
