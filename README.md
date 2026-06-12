@@ -8,7 +8,7 @@ pull request throughput, merge rate, and trending repositories.
 🔗 [View Dashboard](https://datastudio.google.com/reporting/103ac1bd-8de4-47a9-b259-0d34040464fb)
 
 ## Architecture
-
+```
 GH Archive (BigQuery public dataset)
 ↓
 Staging (dbt views, deduped)
@@ -18,6 +18,7 @@ Dims: dim_repo (SCD2) · dim_actor · dim_date
 Facts: fct_pull_requests · fct_repo_engagement · fct_repo_lifecycle
 ↓
 Looker Studio Dashboard
+```
 
 ## Stack
 
