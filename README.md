@@ -48,25 +48,28 @@ Looker Studio Dashboard
 
 ## Models
 
+```
 models/
-├── staging/          # 1:1 with source event types, deduped
+├── staging/                    # 1:1 with source event types, deduped
 │   ├── stg_github__pull_request_events.sql
 │   ├── stg_github__watch_events.sql
 │   ├── stg_github__create_events.sql
 │   └── stg_github__delete_events.sql
-├── marts/
-│   ├── core/         # Shared dimensions
-│   │   ├── dim_date.sql
-│   │   ├── dim_actor.sql
-│   │   └── dim_repo.sql      # SCD Type 2 via snapshot
-│   ├── pull_requests/
-│   │   └── fct_pull_requests.sql
-│   ├── engagement/
-│   │   └── fct_repo_engagement.sql
-│   └── lifecycle/
-│       └── fct_repo_lifecycle.sql
+└── marts/
+    ├── core/                   # Shared dimensions
+    │   ├── dim_date.sql
+    │   ├── dim_actor.sql
+    │   └── dim_repo.sql        # SCD Type 2 via snapshot
+    ├── pull_requests/
+    │   └── fct_pull_requests.sql
+    ├── engagement/
+    │   └── fct_repo_engagement.sql
+    └── lifecycle/
+        └── fct_repo_lifecycle.sql
+
 snapshots/
-└── snap_repos.sql            # SCD Type 2 tracking
+└── snap_repos.sql              # SCD Type 2 tracking
+```
 
 ## Setup
 
