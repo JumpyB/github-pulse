@@ -41,6 +41,26 @@ jobs:
         with:
           credentials_json: ${{ secrets.GCP_SA_KEY }}
 
+      - name: Generate profiles.yml
+        run: |
+          mkdir -p ~/.dbt
+          cat > ~/.dbt/profiles.yml << EOF
+          github_pulse:
+            target: dev
+            outputs:
+              dev:
+                type: bigquery
+                method: oauth
+                project: github-pulse-jumpy
+                dataset: github_pulse_analytics_dev
+                threads: 4
+                location: US
+                timeout_seconds: 300
+          EOF
+
+      - name: Install dbt packages
+        run: uv run dbt deps
+        
       - name: dbt snapshot
         run: uv run dbt snapshot --vars "{\"default_event_date\": \"$EVENT_DATE\"}"
 
