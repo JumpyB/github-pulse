@@ -1,6 +1,6 @@
 with source as (
     select *
-    from {{ source('github_archive', '20260428') }}
+    from {{ source('github_archive', var('default_event_date') | replace('-', '')) }}
     where type = 'WatchEvent'
 ),
 

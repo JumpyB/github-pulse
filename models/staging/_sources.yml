@@ -16,9 +16,13 @@ sources:
       
     database: githubarchive
     schema: day
+    # tables:
+    #   - name: "20260428"
+    #     description: "GitHub events for 2026-04-28 UTC. ~3.65M rows."
     tables:
-      - name: "20260428"
-        description: "GitHub events for 2026-04-28 UTC. ~3.65M rows."
+      - name: "{{ var('default_event_date') | replace('-', '') }}"
+        description: "GitHub events for {{ var('default_event_date') }}."
+
         columns:
           - name: id
             description: "Unique event ID, suitable as primary key."
