@@ -9,6 +9,8 @@ pull request throughput, merge rate, and trending repositories.
 
 🔗 [View Dashboard](https://datastudio.google.com/reporting/103ac1bd-8de4-47a9-b259-0d34040464fb)
 
+![GitHub Pulse Dashboard](docs/images/dashboard.png)
+
 ## Architecture
 ```
 GH Archive (BigQuery public dataset)
