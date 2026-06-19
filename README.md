@@ -23,6 +23,9 @@ Facts: fct_pull_requests · fct_repo_engagement · fct_repo_lifecycle
 ↓
 Looker Studio Dashboard
 ```
+## Lineage Graph
+
+![dbt Lineage Graph](docs/images/lineage.png)
 
 ## Stack
 
