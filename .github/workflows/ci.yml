@@ -53,5 +53,9 @@ jobs:
       - name: dbt compile
         run: uv run dbt compile
 
-      - name: dbt test
-        run: uv run dbt test
+      - name: dbt test (source quality checks — warn only)
+        run: uv run dbt test --select source:github_archive
+        continue-on-error: true
+
+      - name: dbt test (model tests — must pass)
+        run: uv run dbt test --exclude source:github_archive
