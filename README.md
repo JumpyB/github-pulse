@@ -1,3 +1,5 @@
+![dbt CI](https://github.com/JumpyB/github-pulse/actions/workflows/ci.yml/badge.svg)
+
 # GitHub Open Source Pulse
 
 End-to-end analytics pipeline tracking the daily pulse of open source —
