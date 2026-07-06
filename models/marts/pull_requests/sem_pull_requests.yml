@@ -1,0 +1,81 @@
+semantic_models:
+  - name: pull_requests
+    model: ref('fct_pull_requests')
+    defaults:
+      agg_time_dimension: event_at
+    entities:
+      - name: pr_event
+        type: primary
+        expr: pr_event_sk
+    dimensions:
+      - name: event_at
+        type: time
+        type_params:
+          time_granularity: day
+      - name: pr_action
+        type: categorical
+      - name: repo_name
+        type: categorical
+      - name: is_merged
+        type: categorical
+      - name: is_opened
+        type: categorical
+      - name: is_closed
+        type: categorical
+      - name: is_labeled
+        type: categorical
+    measures:
+      - name: opened_count
+        agg: sum
+        expr: "case when is_opened then 1 else 0 end"
+      - name: merged_count
+        agg: sum
+        expr: "case when is_merged then 1 else 0 end"
+      - name: closed_without_merge_count
+        agg: sum
+        expr: "case when is_closed and not is_merged then 1 else 0 end"
+      - name: labeled_count
+        agg: sum
+        expr: "case when is_labeled then 1 else 0 end"
+
+metrics:
+  - name: pr_opened_count
+    label: "PRs Opened"
+    type: simple
+    type_params:
+      measure:
+        name: opened_count
+  - name: pr_merged_count
+    label: "PRs Merged"
+    type: simple
+    type_params:
+      measure:
+        name: merged_count
+  - name: pr_closed_count
+    label: "PRs Closed Without Merge"
+    type: simple
+    type_params:
+      measure:
+        name: closed_without_merge_count
+  - name: pr_labeled_count
+    label: "PRs Labeled"
+    type: simple
+    type_params:
+      measure:
+        name: labeled_count
+  - name: pr_merge_rate
+    label: "PR Merge Rate"
+    type: derived
+    type_params:
+      expr: "safe_divide(pr_merged_count, pr_merged_count + pr_closed_count)"
+      metrics:
+        - name: pr_merged_count
+        - name: pr_closed_count
+  - name: label_velocity
+    label: "Label Velocity"
+    type: derived
+    type_params:
+      expr: "safe_divide(pr_labeled_count, pr_opened_count)"
+      metrics:
+        - name: pr_labeled_count
+        - name: pr_opened_count

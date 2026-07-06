@@ -1,0 +1,45 @@
+semantic_models:
+  - name: repo_engagement
+    description: "Github starring events - one row per star action."
+    model: ref('fct_repo_engagement')
+
+    defaults: 
+      agg_time_dimension: event_at
+
+    entities:
+      - name: engagement_event
+        type: primary
+        expr: engagement_sk
+
+      - name: repo
+        type: foreign
+        expr: repo_sk
+    
+    dimensions:
+      - name: event_at
+        type: time
+        type_params:
+          time_granularity: day
+      
+      - name: repo_name
+        type: categorical
+
+      - name: repo_owner
+        type: categorical
+      
+      - name: actor_login
+        type: categorical
+      
+    measures:
+      - name: star_count
+        description: "Total number of starring events."
+        agg: count
+        expr: engagement_sk
+
+metrics:
+  - name: daily_stars
+    label: "Daily Stars"
+    description: "Number of repos starred per day."
+    type: simple
+    type_params:
+      measure: star_count

@@ -1,0 +1,50 @@
+semantic_models:
+  - name: repo_lifecycle
+    model: ref('fct_repo_lifecycle')
+    defaults:
+      agg_time_dimension: event_at
+    entities:
+      - name: lifecycle_event
+        type: primary
+        expr: lifecycle_sk
+    dimensions:
+      - name: event_at
+        type: time
+        type_params:
+          time_granularity: day
+      - name: lifecycle_action
+        type: categorical
+      - name: ref_type
+        type: categorical
+      - name: repo_name
+        type: categorical
+    measures:
+      - name: created_count
+        agg: sum
+        expr: "case when lifecycle_action = 'created' then 1 else 0 end"
+      - name: deleted_count
+        agg: sum
+        expr: "case when lifecycle_action = 'deleted' then 1 else 0 end"
+
+metrics:
+  - name: branch_created_count
+    label: "Branches Created"
+    type: simple
+    type_params:
+      measure:
+        name: created_count
+  - name: branch_deleted_count
+    label: "Branches Deleted"
+    type: simple
+    type_params:
+      measure:
+        name: deleted_count
+  - name: branch_net_growth
+    label: "Branch Net Growth"
+    description: "Branches created minus branches deleted."
+    type: derived
+    type_params:
+      expr: "branch_created_count - branch_deleted_count"
+      metrics:
+        - name: branch_created_count
+        - name: branch_deleted_count
