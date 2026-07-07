@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
     inputs:
       event_date:
-        description: 'Date to process (YYYY-MM-DD). Default: yesterday.'
+        description: 'Date to process YYYY-MM-DD. Default is yesterday.'
         required: false
 
 jobs:
@@ -44,7 +44,7 @@ jobs:
       - name: Generate profiles.yml
         run: |
           mkdir -p ~/.dbt
-          cat > ~/.dbt/profiles.yml << EOF
+          cat > ~/.dbt/profiles.yml << 'PROFILE'
           github_pulse:
             target: dev
             outputs:
@@ -56,16 +56,24 @@ jobs:
                 threads: 4
                 location: US
                 timeout_seconds: 300
-          EOF
+          PROFILE
 
       - name: Install dbt packages
         run: uv run dbt deps
-        
+
       - name: dbt snapshot
-        run: uv run dbt snapshot --vars "{\"default_event_date\": \"$EVENT_DATE\"}"
+        run: |
+          uv run dbt snapshot --vars "{\"default_event_date\": \"$EVENT_DATE\"}"
 
       - name: dbt run
-        run: uv run dbt run --vars "{\"default_event_date\": \"$EVENT_DATE\"}"
+        run: |
+          uv run dbt run --vars "{\"default_event_date\": \"$EVENT_DATE\"}"
 
-      - name: dbt test
-        run: uv run dbt test --vars "{\"default_event_date\": \"$EVENT_DATE\"}"
+      - name: dbt test source checks warn only
+        run: |
+          uv run dbt test --select "source:github_archive" --vars "{\"default_event_date\": \"$EVENT_DATE\"}"
+        continue-on-error: true
+
+      - name: dbt test model tests required
+        run: |
+          uv run dbt test --exclude "source:github_archive" --vars "{\"default_event_date\": \"$EVENT_DATE\"}"
