@@ -56,6 +56,7 @@ jobs:
                 threads: 4
                 location: US
                 timeout_seconds: 300
+                maximum_bytes_billed: 10000000000
           PROFILE
 
       - name: Install dbt packages
