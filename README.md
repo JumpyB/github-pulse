@@ -11,6 +11,11 @@ pull request throughput, merge rate, and trending repositories.
 
 ![GitHub Pulse Dashboard](docs/images/dashboard.png)
 
+> **⚠️ Note on star volume**: This dashboard is live and refreshes daily, so
+> current star counts will look far smaller than the figures cited below.
+> This is upstream data degradation, not a pipeline defect — see
+> [Upstream Coverage Degradation](#upstream-coverage-degradation).
+
 ## Architecture
 ```
 GH Archive (BigQuery public dataset)
@@ -53,6 +58,36 @@ Looker Studio Dashboard
   → merge detection uses top-level `action = 'merged'` instead
 - PushEvent payload omits `size` and `commits[]` array → commit-level analysis not possible
 - WatchEvent = starring (legacy naming from GitHub API)
+
+### Upstream Coverage Degradation
+
+Between May and July 2026, GH Archive's non-push event volume fell ~97% while
+total daily event count held flat (3.7M → 4.0M).
+
+| Event type | 2026-04-28 | 2026-07-31 | Change |
+|---|---|---|---|
+| PushEvent | 2,832,008 | 3,831,460 | **+35%** |
+| PullRequestEvent | 97,872 | 3,825 | −96.1% |
+| WatchEvent | 27,015 | 738 | −97.3% |
+| IssuesEvent | 36,810 | 1,369 | −96.3% |
+| ForkEvent | 5,975 | 198 | −96.7% |
+
+**Root cause**: collector-side sampling under a fixed capacity ceiling.
+Fifteen unrelated event types declined by an almost identical ≈96% — a
+uniformity that rules out any GitHub API policy change, since wiki edits and
+forks would not fall at the same rate as starring. Over the same period
+PushEvent share rose from 77% to 95.5%.
+
+Inspecting the top PushEvent repositories confirms it: the highest-volume
+repos are automation bots using git as a datastore — `er-forge-probe`
+(6,791 pushes/day), `email-probe` (5,323), `conda-forge-bot-data` (1,257).
+At 6,791 pushes/day that is one commit every 13 seconds. This traffic
+saturates the collector and crowds every other event type down to a ~3%
+retention rate.
+
+PushEvent data remains complete (3,831,460 rows, zero duplicate IDs), so
+push-based metrics stay reliable. Engagement metrics remain directionally
+useful but are no longer volumetrically representative.
 
 ## Models
 
