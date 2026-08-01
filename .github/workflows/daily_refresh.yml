@@ -33,7 +33,7 @@ jobs:
           if [ -n "${{ github.event.inputs.event_date }}" ]; then
             echo "EVENT_DATE=${{ github.event.inputs.event_date }}" >> $GITHUB_ENV
           else
-            echo "EVENT_DATE=$(date -u -d 'yesterday' '+%Y-%m-%d')" >> $GITHUB_ENV
+            echo "EVENT_DATE=$(date -u -d '2 days ago' '+%Y-%m-%d')" >> $GITHUB_ENV
           fi
 
       - name: Authenticate to GCP
