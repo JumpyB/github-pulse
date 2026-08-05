@@ -1,12 +1,22 @@
 semantic_models:
   - name: pull_requests
+    description: >
+      GitHub pull request action events as captured by GH Archive.
+      One row per recorded PR action.
     model: ref('fct_pull_requests')
+
     defaults:
       agg_time_dimension: event_at
+
     entities:
       - name: pr_event
         type: primary
         expr: pr_event_sk
+
+      - name: repo
+        type: foreign
+        expr: repo_sk
+
     dimensions:
       - name: event_at
         type: time
@@ -24,58 +34,76 @@ semantic_models:
         type: categorical
       - name: is_labeled
         type: categorical
+
     measures:
-      - name: opened_count
+      - name: pr_opened_event_count
+        description: "Number of recorded PR opened events."
         agg: sum
         expr: "case when is_opened then 1 else 0 end"
-      - name: merged_count
+
+      - name: pr_merged_event_count
+        description: "Number of recorded PR merged events."
         agg: sum
         expr: "case when is_merged then 1 else 0 end"
-      - name: closed_without_merge_count
+
+      - name: pr_closed_unmerged_event_count
+        description: "Number of recorded PR closed-without-merge events."
         agg: sum
         expr: "case when is_closed and not is_merged then 1 else 0 end"
-      - name: labeled_count
+
+      - name: pr_labeled_event_count
+        description: "Number of recorded PR labeled events."
         agg: sum
         expr: "case when is_labeled then 1 else 0 end"
 
 metrics:
-  - name: pr_opened_count
-    label: "PRs Opened"
+  - name: recorded_prs_opened
+    label: "Recorded PRs Opened"
+    description: >
+      PR opened events captured by GH Archive. Capture has degraded since
+      mid-2025 — see README. Ratios remain meaningful; absolute volumes
+      do not.
     type: simple
     type_params:
       measure:
-        name: opened_count
-  - name: pr_merged_count
-    label: "PRs Merged"
+        name: pr_opened_event_count
+
+  - name: recorded_prs_merged
+    label: "Recorded PRs Merged"
+    description: "PR merged events captured by GH Archive."
     type: simple
     type_params:
       measure:
-        name: merged_count
-  - name: pr_closed_count
-    label: "PRs Closed Without Merge"
+        name: pr_merged_event_count
+
+  - name: recorded_prs_closed_unmerged
+    label: "Recorded PRs Closed Without Merge"
+    description: "PR closed-without-merge events captured by GH Archive."
     type: simple
     type_params:
       measure:
-        name: closed_without_merge_count
-  - name: pr_labeled_count
-    label: "PRs Labeled"
+        name: pr_closed_unmerged_event_count
+
+  - name: recorded_prs_labeled
+    label: "Recorded PRs Labeled"
+    description: >
+      PR labeling events captured by GH Archive. Useful for slicing by repo
+      to identify automated triage, but not comparable across repos with
+      different labeling conventions.
     type: simple
     type_params:
       measure:
-        name: labeled_count
+        name: pr_labeled_event_count
+
   - name: pr_merge_rate
     label: "PR Merge Rate"
+    description: >
+      Merged PRs as a share of PRs reaching a terminal state.
+      Because this is a ratio of two equally-sampled measures, it remains
+      reliable despite upstream capture degradation.
     type: derived
     type_params:
-      expr: "safe_divide(pr_merged_count, pr_merged_count + pr_closed_count)"
+      expr: "safe_divide(recorded_prs_merged, recorded_prs_merged + recorded_prs_closed_unmerged)"
       metrics:
-        - name: pr_merged_count
-        - name: pr_closed_count
-  - name: label_velocity
-    label: "Label Velocity"
-    type: derived
-    type_params:
-      expr: "safe_divide(pr_labeled_count, pr_opened_count)"
-      metrics:
-        - name: pr_labeled_count
-        - name: pr_opened_count
+        - name: recorded_prs_merged
+        - name: recorded_prs_closed_unmerged

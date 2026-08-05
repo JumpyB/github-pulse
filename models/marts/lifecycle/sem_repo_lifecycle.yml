@@ -1,12 +1,18 @@
 semantic_models:
   - name: repo_lifecycle
+    description: >
+      Repository reference lifecycle events as captured by GH Archive.
+      One row per recorded creation or deletion.
     model: ref('fct_repo_lifecycle')
+
     defaults:
       agg_time_dimension: event_at
+
     entities:
       - name: lifecycle_event
         type: primary
         expr: lifecycle_sk
+
     dimensions:
       - name: event_at
         type: time
@@ -18,33 +24,70 @@ semantic_models:
         type: categorical
       - name: repo_name
         type: categorical
+
     measures:
-      - name: created_count
+      - name: branch_created_event_count
+        description: "Number of recorded branch creation events."
         agg: sum
-        expr: "case when lifecycle_action = 'created' then 1 else 0 end"
-      - name: deleted_count
+        expr: >
+          case
+            when lifecycle_action = 'created'
+             and ref_type = 'branch'
+            then 1
+            else 0
+          end
+
+      - name: branch_deleted_event_count
+        description: "Number of recorded branch deletion events."
         agg: sum
-        expr: "case when lifecycle_action = 'deleted' then 1 else 0 end"
+        expr: >
+          case
+            when lifecycle_action = 'deleted'
+             and ref_type = 'branch'
+            then 1
+            else 0
+          end
 
 metrics:
   - name: branch_created_count
-    label: "Branches Created"
+    label: "Recorded Branches Created"
+    description: "Branch creation events captured by GH Archive."
     type: simple
     type_params:
       measure:
-        name: created_count
+        name: branch_created_event_count
+
   - name: branch_deleted_count
-    label: "Branches Deleted"
+    label: "Recorded Branches Deleted"
+    description: "Branch deletion events captured by GH Archive."
     type: simple
     type_params:
       measure:
-        name: deleted_count
+        name: branch_deleted_event_count
+
   - name: branch_net_growth
-    label: "Branch Net Growth"
-    description: "Branches created minus branches deleted."
+    label: "Recorded Branch Net Growth"
+    description: >
+      Recorded branch creations minus recorded deletions. This is a
+      difference of two counts, so it scales down with capture rate —
+      use branch_retention_rate for a sampling-robust view.
     type: derived
     type_params:
       expr: "branch_created_count - branch_deleted_count"
+      metrics:
+        - name: branch_created_count
+        - name: branch_deleted_count
+
+  - name: branch_retention_rate
+    label: "Branch Retention Rate"
+    description: >
+      Share of recorded branch events that are creations rather than
+      deletions. Values above 0.5 indicate net branch growth. As a ratio
+      of two equally-sampled measures, this is unaffected by upstream
+      capture degradation.
+    type: derived
+    type_params:
+      expr: "safe_divide(branch_created_count, branch_created_count + branch_deleted_count)"
       metrics:
         - name: branch_created_count
         - name: branch_deleted_count

@@ -1,9 +1,11 @@
 semantic_models:
   - name: repo_engagement
-    description: "Github starring events - one row per star action."
+    description: >
+      GitHub starring events as captured by GH Archive.
+      One row per recorded star action.
     model: ref('fct_repo_engagement')
 
-    defaults: 
+    defaults:
       agg_time_dimension: event_at
 
     entities:
@@ -14,32 +16,37 @@ semantic_models:
       - name: repo
         type: foreign
         expr: repo_sk
-    
+
     dimensions:
       - name: event_at
         type: time
         type_params:
           time_granularity: day
-      
+
       - name: repo_name
         type: categorical
 
       - name: repo_owner
         type: categorical
-      
+
       - name: actor_login
         type: categorical
-      
+
     measures:
-      - name: star_count
-        description: "Total number of starring events."
+      - name: star_event_count
+        description: "Number of star events captured by GH Archive."
         agg: count
         expr: engagement_sk
 
 metrics:
-  - name: daily_stars
-    label: "Daily Stars"
-    description: "Number of repos starred per day."
+  - name: recorded_star_events
+    label: "Recorded Star Events"
+    description: >
+      Star events captured by GH Archive. Capture rate has degraded
+      substantially since mid-2025 — roughly 0.34% of true activity as of
+      mid-2026. Use for directional comparison only, not absolute volume.
+      See README for the full investigation.
     type: simple
     type_params:
-      measure: star_count
+      measure:
+        name: star_event_count
