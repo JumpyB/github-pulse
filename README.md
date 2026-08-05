@@ -2,8 +2,10 @@
 
 # GitHub Open Source Pulse
 
-End-to-end analytics pipeline tracking the daily pulse of open source —
-pull request throughput, merge rate, and trending repositories.
+An end-to-end analytics pipeline on the GitHub Archive public dataset —
+and a case study in detecting and diagnosing upstream data degradation.
+
+**Stack**: BigQuery · dbt Core · dbt Semantic Layer · GitHub Actions · Looker Studio
 
 ## Live Dashboard
 
@@ -11,98 +13,178 @@ pull request throughput, merge rate, and trending repositories.
 
 ![GitHub Pulse Dashboard](docs/images/dashboard.png)
 
-> **⚠️ Note on star volume**: This dashboard is live and refreshes daily, so
-> current star counts will look far smaller than the figures cited below.
-> This is upstream data degradation, not a pipeline defect — see
-> [Upstream Coverage Degradation](#upstream-coverage-degradation).
+> **⚠️ On the star figures**: This dashboard refreshes daily, and current
+> star counts are a tiny fraction of historical levels. This reflects
+> upstream capture degradation, not a pipeline defect — see
+> [Upstream Coverage Degradation](#upstream-coverage-degradation) for the
+> full investigation.
 
 ## Architecture
+
 ```
 GH Archive (BigQuery public dataset)
-↓
-Staging (dbt views, deduped)
-↓
-Dims: dim_repo (SCD2) · dim_actor · dim_date
-↓
+        ↓
+Staging (dbt views, deduplicated)
+        ↓
+Dims: dim_repo (SCD Type 2) · dim_actor · dim_date
+        ↓
 Facts: fct_pull_requests · fct_repo_engagement · fct_repo_lifecycle
-↓
-Looker Studio Dashboard
+        ↓
+Semantic Layer (10 metrics) → Looker Studio
 ```
-## Lineage Graph
 
 ![dbt Lineage Graph](docs/images/lineage.png)
 
-## Stack
+## What's Here
 
-| Layer | Tool |
+| Layer | Contents |
 |---|---|
-| Source | GitHub Archive (BigQuery public dataset) |
-| Warehouse | BigQuery |
-| Transformation | dbt Core 1.11 + dbt-utils |
-| Orchestration | GitHub Actions (coming soon) |
-| BI | Looker Studio |
-| IaC | Terraform (stretch) |
+| Staging | 4 models, 1:1 with source event types, deduplicated via `QUALIFY ROW_NUMBER()` |
+| Dimensions | `dim_repo` (SCD Type 2 via snapshot), `dim_actor` (Type 1), `dim_date` |
+| Facts | 3 tables in a constellation schema sharing conformed dimensions |
+| Semantic Layer | 10 metrics — merge rate, label velocity, branch net growth |
+| Tests | 54 data tests across sources, staging, and marts |
+| Orchestration | GitHub Actions — CI on every push, daily refresh via cron |
+| Docs | dbt docs with full lineage, published to GitHub Pages |
 
-## Key Findings
+## Upstream Coverage Degradation
 
-- **27,015 stars** recorded on 2026-04-28
-- Top trending repo: `mattpocock/skills` (497 stars) — reflecting the AI agent skills ecosystem
-- Star activity peaks at **2-6AM UTC** (Asia/Europe overlap) and dips mid-day UTC
-- **6 of top 10** trending repos are AI agent / Claude skills related — capturing the 2026 open source zeitgeist
-- Discovered GH Archive uses at-least-once delivery: 2 duplicate event IDs in source,
-  handled via `QUALIFY ROW_NUMBER()` deduplication in all staging models
+The most substantive finding in this project came from investigating why
+dashboard metrics collapsed, and it took three rounds of self-correction.
+
+### The observation
+
+Star events recorded per day:
+
+| Date | WatchEvents | Total events | PushEvent share |
+|---|---|---|---|
+| 2025-01-15 | 211,526 | 5,307,607 | 62.7% |
+| 2025-04-15 | **218,621** | 5,634,352 | 62.2% |
+| 2025-05-15 | 207,879 | 5,547,296 | 61.7% |
+| 2025-07-15 | 172,465 | 3,810,192 | 60.4% |
+| 2025-10-15 | 91,091 | 3,465,925 | 68.0% |
+| 2026-04-28 | 27,015 | 3,658,498 | 77.4% |
+| 2026-07-31 | **738** | 4,013,080 | 95.5% |
+
+Against the 2025-04 baseline, capture has fallen to **0.34%**.
+
+### Correction 1 — the timeline
+
+I initially dated the degradation to May 2026, based on the two dates I
+had measured. GH Archive's own issue tracker documents it starting around
+**June 2025**, verified against GitHub's stargazers API as ground truth:
+capture fell from a 95–100% baseline to under 20% during 2026.
+
+My 2026-04 figure of 27,015 was never a baseline — it was already ~12% of
+true activity.
+
+### Correction 2 — the magnitude
+
+Querying back into 2025 established the real baseline at ~215,000
+WatchEvents/day. The actual decline is from 218,621 to 738, not from
+27,015 to 738. My original estimate understated it by an order of
+magnitude.
+
+### Correction 3 — the causal direction
+
+I hypothesized that automation traffic was crowding out other event types,
+citing PushEvent share rising from 77% to 95.5%. **The timeline rules this
+out.** When degradation began in mid-2025, push share was *falling* —
+62.7% → 62.2% → 61.7%. It only rose past 68% in late 2025, months after
+the onset.
+
+Push share increasing is a *consequence* of other event types being
+dropped, not a cause. I had the causal arrow backwards.
+
+The actual onset coincides with total captured volume falling 32%
+(5.63M → 3.81M) in mid-2025, with WatchEvent discarded at a far higher
+rate than PushEvent.
+
+### What I verified independently
+
+- **Thirteen unrelated event types declined by an almost identical ≈96%.**
+  Wiki edits, forks, releases, and starring have no shared real-world
+  driver that would move them at the same rate — uniformity across
+  unrelated categories is the signature of sampling.
+- **The hourly distribution flattened.** April 2026 showed a 5×
+  peak-to-trough diurnal swing; July 2026 was nearly flat (12–76/hour).
+  Genuine global developer activity always has a day/night cycle.
+
+### What I could not verify
+
+Independent verification against GitHub's own per-day star counts proved
+impractical: the stargazers endpoint requires authentication, and
+pagination caps at 400 pages, placing recent stars on any repo above
+~40,000 total out of reach. The confirmation above comes from GH Archive's
+issue tracker, where another contributor completed this comparison.
+
+### Implication
+
+PushEvent data remains complete — 3,831,460 rows on 2026-07-31 with zero
+duplicate IDs. Push-based metrics are reliable. Engagement and PR metrics
+are directional only, and the dashboard reflects this.
 
 ## Data Caveats
 
-- PR payload simplified in GH Archive 2026: `additions`, `deletions`, `merged` (nested) are NULL
-  → merge detection uses top-level `action = 'merged'` instead
-- PushEvent payload omits `size` and `commits[]` array → commit-level analysis not possible
-- WatchEvent = starring (legacy naming from GitHub API)
+- **Payload simplification is selective, not uniform.** `PullRequestEvent`
+  payloads are stripped to ~500 characters — no title, author, state, or
+  line counts — so merge detection uses the top-level `action` field
+  rather than the nested `pull_request.merged`. But
+  `PullRequestReviewEvent` payloads remain complete at ~2,000 characters
+  with `review.state` populated. The cuts appear driven by object size
+  (a PR object embeds two full repository objects) rather than by event
+  category.
+- **PushEvent payloads carry only five fields** — `repository_id`,
+  `push_id`, `ref`, `head`, `before`. No `commits[]` array or `size`,
+  so commit-level analysis is impossible; push-level activity is
+  countable.
+- **GH Archive uses at-least-once delivery.** Duplicate event IDs appear
+  in the source. All staging models deduplicate via
+  `QUALIFY ROW_NUMBER() OVER (PARTITION BY id ORDER BY created_at) = 1`.
+  The source-level uniqueness test is retained as a non-blocking monitor
+  rather than removed — it tracks upstream quality without failing runs
+  over a known condition.
+- **`WatchEvent` means starring**, not watching — legacy naming in the
+  GitHub Events API.
 
-### Upstream Coverage Degradation
+## Push Concentration
 
-Between May and July 2026, GH Archive's non-push event volume fell ~97% while
-total daily event count held flat (3.7M → 4.0M).
+While investigating the degradation, the push data yielded a separate
+finding. Bucketing repositories by daily push volume on 2026-07-31:
 
-| Event type | 2026-04-28 | 2026-07-31 | Change |
+| Tier | Repos | Pushes | Share of all pushes |
 |---|---|---|---|
-| PushEvent | 2,832,008 | 3,831,460 | **+35%** |
-| PullRequestEvent | 97,872 | 3,825 | −96.1% |
-| WatchEvent | 27,015 | 738 | −97.3% |
-| IssuesEvent | 36,810 | 1,369 | −96.3% |
-| ForkEvent | 5,975 | 198 | −96.7% |
+| 1000+ | 24 | 49,521 | 1.3% |
+| 100–999 | 13,214 | 2,579,390 | **67.3%** |
+| 10–99 | 13,969 | 521,507 | 13.6% |
+| 1–9 | 424,720 | 681,042 | 17.8% |
 
-**Root cause**: collector-side sampling under a fixed capacity ceiling.
-Fifteen unrelated event types declined by an almost identical ≈96% — a
-uniformity that rules out any GitHub API policy change, since wiki edits and
-forks would not fall at the same rate as starring. Over the same period
-PushEvent share rose from 77% to 95.5%.
+**2.9% of active repositories generate 67.3% of all pushes.**
 
-Inspecting the top PushEvent repositories confirms it: the highest-volume
-repos are automation bots using git as a datastore — `er-forge-probe`
-(6,791 pushes/day), `email-probe` (5,323), `conda-forge-bot-data` (1,257).
-At 6,791 pushes/day that is one commit every 13 seconds. This traffic
-saturates the collector and crowds every other event type down to a ~3%
-retention rate.
+The extreme outliers turned out not to matter — the top tier, including
+repos pushing 6,791 times a day (one commit every 13 seconds), accounts
+for only 1.3% of traffic. The mass sits in the 100–999 tier: sustained
+rates of 4–40 pushes per hour that no individual developer produces.
 
-PushEvent data remains complete (3,831,460 rows, zero duplicate IDs), so
-push-based metrics stay reliable. Engagement metrics remain directionally
-useful but are no longer volumetrically representative.
+Percentile distribution supports the threshold: p50 = 1, p90 = 4,
+p95 = 17, p99 = 194. The 11× jump between p95 and p99 marks where the
+distribution breaks.
 
 ## Models
 
 ```
 models/
-├── staging/                    # 1:1 with source event types, deduped
+├── staging/                    # 1:1 with source event types, deduplicated
 │   ├── stg_github__pull_request_events.sql
 │   ├── stg_github__watch_events.sql
 │   ├── stg_github__create_events.sql
 │   └── stg_github__delete_events.sql
 └── marts/
-    ├── core/                   # Shared dimensions
+    ├── core/                   # Conformed dimensions
     │   ├── dim_date.sql
     │   ├── dim_actor.sql
-    │   └── dim_repo.sql        # SCD Type 2 via snapshot
+    │   ├── dim_repo.sql        # SCD Type 2 via snapshot
+    │   └── metricflow_time_spine.sql
     ├── pull_requests/
     │   └── fct_pull_requests.sql
     ├── engagement/
@@ -111,21 +193,24 @@ models/
         └── fct_repo_lifecycle.sql
 
 snapshots/
-└── snap_repos.sql              # SCD Type 2 tracking
+└── snap_repos.sql              # SCD Type 2 change tracking
 ```
 
 ## Setup
 
 ```bash
-# Install dependencies
 uv add dbt-bigquery
 uv run dbt deps
 
-# Configure BigQuery credentials
-# Copy profiles.yml.example to ~/.dbt/profiles.yml and fill in your GCP project
+# Configure ~/.dbt/profiles.yml with your GCP project
 
-# Run pipeline
 uv run dbt snapshot
 uv run dbt run
 uv run dbt test
+```
+
+Run against a specific date:
+
+```bash
+uv run dbt run --vars '{"default_event_date": "2025-04-15"}'
 ```
